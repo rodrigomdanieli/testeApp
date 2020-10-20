@@ -7,10 +7,12 @@ use DBSnoop\Annotations\Needed;
 use DBSnoop\Annotations\Request;
 use DBSnoop\Annotations\Route;
 use DBSnoop\Annotations\Type;
-use DBSnoop\Entities\Login as DBLogin;
+
+use DBSnoop\SysControl\Auth as DBAuth;
+
 use DBSnoop\System\Authentication;
-use DBSnoop\System\ServerRequestControl;
 use DBSnoop\System\Response;
+use DBSnoop\System\ServerRequestControl;
 
 class Login extends ServerRequestControl
 {
@@ -24,25 +26,24 @@ class Login extends ServerRequestControl
      * })
      * @Type("JSON")
      */
-    public function login() : Response\JSON
+    public function login(): Response\JSON
     {
         $user = $this->REQUEST['username'];
         $pass = $this->REQUEST['password'];
-        $login = new DBLogin();
+        $login = new DBAuth();
 
         $response = array(
-            "status"    => "ok",
-            "data"      => array()
+            "status" => "ok",
+            "data" => array(),
         );
-        echo $user . $pass . PHP_EOL;
-        $verified = $login->doLogin($user, $pass);
-        var_dump($verified);
+
+        $verified = $login->Login($user, $pass);
         if ($verified['status'] == "ok") {
             if (empty($verified['data'])) {
                 $response["status"] = "error";
-                $response["data"] = "INVALID LOGIN!";
+                $response["data"] = "INVALID_LOGIN";
 
-            }else{
+            } else {
                 $auth = new Authentication();
                 $token = $auth->createNewAuthentication($verified['data'][0]);
                 $response["data"] = array('token' => $token);
@@ -59,9 +60,10 @@ class Login extends ServerRequestControl
      * @Route("/auth/check")
      * @Auth(true)
      * @Request("GET")
+     * @Type("JSON")
      */
 
-    public function check_login($request) : Response\JSON
+    public function check_login(): Response\JSON
     {
 
         return new Response\JSON("ok", $this->SESSION);
@@ -69,13 +71,14 @@ class Login extends ServerRequestControl
     }
 
     /**
+     * 
      * @Route("/auth/logout")
      * @Auth(true)
      * @Request("GET")
+     * @Type("JSON")
      */
-    public function logout($request) : Response\JSON
+    public function logout(): Response\JSON
     {
-
         $auth = new Authentication($this->SESSION_ID);
         $auth->destroySession();
         return new Response\JSON("ok", array("logout OK"));

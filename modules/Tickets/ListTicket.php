@@ -7,9 +7,9 @@ use DBSnoop\Annotations\Needed;
 use DBSnoop\Annotations\Request;
 use DBSnoop\Annotations\Route;
 use DBSnoop\Annotations\Type;
-use DBSnoop\Entities\Lists\Ticket;
-use DBSnoop\System\ServerRequestControl;
+use DBSnoop\Lists\Ticket;
 use DBSnoop\System\Response;
+use DBSnoop\System\ServerRequestControl;
 
 class ListTicket extends ServerRequestControl
 {
@@ -21,10 +21,10 @@ class ListTicket extends ServerRequestControl
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
-     *  "ticket_id",
-     *  "customer_id",
-     *  "group_id",
-     *  "server_id",
+     *  "ticket",
+     *  "customer",
+     *  "group",
+     *  "server",
      *  "status",
      *  "type",
      *  "you",
@@ -33,19 +33,14 @@ class ListTicket extends ServerRequestControl
      *  "commentary"
      * })
      */
-    public function getCounts() : Response\JSON
+    public function getList(): Response\JSON
     {
-
+        var_dump($this->REQUEST);
         $params = $this->REQUEST;
-        $params['user_id'] = $this->SESSION['user_id'];
-
+        $params['user'] = $this->SESSION['user_id'];
         $ticket = new Ticket($params);
-        $list = $ticket->getList();
-        
-        if ($list['status'] == "ok") {
-            return new Response\JSON("ok", $list['data']);
-        }else{
-            return new Response\JSON("error", $list);
-        }
+
+        return new Response\JSON("ok", $ticket->toArray());
+
     }
 }
