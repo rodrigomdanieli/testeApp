@@ -1,0 +1,19 @@
+{
+  "name": "hti-tecnologia/poc-dbsnoop-backend",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "git@github.com:hti-tecnologia/dbsnoop-library.git"
+    }
+  ],
+  "require": {
+    "hti-tecnologia/dbsnoop-library": "^0.1"
+  },
+  
+  "autoload": {
+    "psr-4": {
+      "DBModules\\": "modules/",
+      "DBRoutines\\": "routines/"
+    }
+  }
+}
