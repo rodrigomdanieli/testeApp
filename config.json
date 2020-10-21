@@ -1,0 +1,20 @@
+{
+    "project_dir": "./",
+    "workers": {
+        "num": 15,
+        "file": "worker.php",
+        "restart" : 60.0,
+        "socket_dir": "/sockets/"
+    },
+    "git": {
+        "update": 60.0,
+        "git_dir" : "hti-tecnologia/poc-dbsnoop-backend",
+        "user": "rodrigomdanieli",
+        "branch": "master",
+        "token": "fed10ae3c4f4d555c52e19f86b9a2c1261eea984"
+    },
+    "nginx" : {
+        "user" : "nginx",
+        "load_balance_file" : "/etc/nginx/conf.d/load_balance.conf"
+    }
+}
