@@ -8,7 +8,7 @@
     },
     "git": {
         "update": 60.0,
-        "git_dir" : "hti-tecnologia/poc-dbsnoop-backend",
+        "git_dir" : "rodrigomdanieli/testeApp",
         "user": "rodrigomdanieli",
         "branch": "master",
         "token": "fed10ae3c4f4d555c52e19f86b9a2c1261eea984"
