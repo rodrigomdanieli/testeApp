@@ -4,7 +4,7 @@ include "vendor/autoload.php";
 
 $loop = React\EventLoop\Factory::create();
 
-$config = json_decode(file_get_contents("config.json"), true);
+$config = json_decode(file_get_contents("/app/config.json"), true);
 
 
 $worker = $config['workers'];
@@ -17,7 +17,7 @@ $process_list = array();
 function createProcess(int $index)
 {
 
-    $config = json_decode(file_get_contents("config.json"), true);
+    $config = json_decode(file_get_contents("/app/config.json"), true);
 
 
     $worker = $config['workers'];
@@ -49,7 +49,7 @@ function createProcess(int $index)
 function gitUpdate()
 {
     
-    $config = json_decode(file_get_contents("config.json"), true);
+    $config = json_decode(file_get_contents("/app/config.json"), true);
 
     $git = $config['git'];
     $remote = "https://" . $git['user'] . ":" . $git['token'] . "@github.com/" . $git['git_dir'];
@@ -59,7 +59,7 @@ function gitUpdate()
 
 function nginxConfig($list)
 {
-    $config = json_decode(file_get_contents("config.json"), true);
+    $config = json_decode(file_get_contents("/app/config.json"), true);
 
     $worker = $config['workers'];
     $nginx = $config['nginx'];
