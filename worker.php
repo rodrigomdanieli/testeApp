@@ -4,6 +4,8 @@
 
     use DBSnoop\System\DBSnoop;
     $server = new DBSnoop($argv);
+
     $server->run();
 
+    while(true){}
 

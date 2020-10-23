@@ -18563,3 +18563,73 @@ db2 Time to exec: 6.8050720691681 seconds
 mssql Time to exec: 11.539598941803 seconds
 linux Time to exec: 13.293846130371 seconds
 mysql Time to exec: 14.293632030487 seconds
+Start db2 (2020-10-23 19:00)
+Start mysql (2020-10-23 19:00)
+Start linux (2020-10-23 19:00)
+Start mssql (2020-10-23 19:00)
+Start oracle (2020-10-23 19:00)
+db2 Time to exec: 2.6047120094299 seconds
+oracle Time to exec: 2.6595478057861 seconds
+mssql Time to exec: 6.7748448848724 seconds
+linux Time to exec: 9.1705918312073 seconds
+mysql Time to exec: 12.550703048706 seconds
+Start mysql (2020-10-23 19:02)
+Start db2 (2020-10-23 19:02)
+Start linux (2020-10-23 19:02)
+Start mssql (2020-10-23 19:02)
+Start oracle (2020-10-23 19:02)
+oracle Time to exec: 2.6048250198364 seconds
+db2 Time to exec: 2.7939519882202 seconds
+mssql Time to exec: 3.8386449813843 seconds
+mysql Time to exec: 9.238578081131 seconds
+linux Time to exec: 9.3273229598999 seconds
+Start oracle (2020-10-23 19:02)
+Start db2 (2020-10-23 19:02)
+Start mysql (2020-10-23 19:02)
+Start linux (2020-10-23 19:02)
+Start mssql (2020-10-23 19:02)
+oracle Time to exec: 5.5297269821167 seconds
+db2 Time to exec: 5.6872100830078 seconds
+mssql Time to exec: 10.874825954437 seconds
+mysql Time to exec: 15.622805118561 seconds
+linux Time to exec: 18.106404066086 seconds
+Start oracle (2020-10-23 19:04)
+Start mssql (2020-10-23 19:04)
+Start linux (2020-10-23 19:04)
+Start db2 (2020-10-23 19:04)
+Start mysql (2020-10-23 19:04)
+oracle Time to exec: 3.2653131484985 seconds
+db2 Time to exec: 3.5291728973389 seconds
+mssql Time to exec: 11.844069004059 seconds
+mysql Time to exec: 16.722677946091 seconds
+linux Time to exec: 17.108933210373 seconds
+Start oracle (2020-10-23 19:04)
+Start db2 (2020-10-23 19:04)
+Start mysql (2020-10-23 19:04)
+Start mssql (2020-10-23 19:04)
+Start linux (2020-10-23 19:04)
+oracle Time to exec: 1.9367120265961 seconds
+db2 Time to exec: 3.7077350616455 seconds
+mssql Time to exec: 5.0791449546814 seconds
+linux Time to exec: 8.0873119831085 seconds
+mysql Time to exec: 10.764066934586 seconds
+Start mssql (2020-10-23 19:06)
+Start linux (2020-10-23 19:06)
+Start oracle (2020-10-23 19:06)
+Start db2 (2020-10-23 19:06)
+Start mysql (2020-10-23 19:06)
+oracle Time to exec: 3.0865681171417 seconds
+db2 Time to exec: 3.2435810565948 seconds
+mssql Time to exec: 9.5018351078033 seconds
+mysql Time to exec: 12.946600914001 seconds
+linux Time to exec: 13.008152961731 seconds
+Start linux (2020-10-23 19:06)
+Start oracle (2020-10-23 19:06)
+Start mysql (2020-10-23 19:06)
+Start mssql (2020-10-23 19:06)
+Start db2 (2020-10-23 19:06)
+oracle Time to exec: 6.8252501487732 seconds
+db2 Time to exec: 7.9020857810974 seconds
+mssql Time to exec: 10.740759134293 seconds
+linux Time to exec: 17.60831284523 seconds
+mysql Time to exec: 17.686289072037 seconds

@@ -4,7 +4,8 @@ include "vendor/autoload.php";
 
 $loop = React\EventLoop\Factory::create();
 
-$config = json_decode(file_get_contents("/app/config.json"), true);
+$config = json_decode(file_get_contents("config.json"), true);
+
 
 $worker = $config['workers'];
 $nginx = $config['nginx'];
@@ -16,7 +17,8 @@ $process_list = array();
 function createProcess(int $index)
 {
 
-    $config = json_decode(file_get_contents("/app/config.json"), true);
+    $config = json_decode(file_get_contents("config.json"), true);
+
 
     $worker = $config['workers'];
     $nginx = $config['nginx'];
@@ -46,7 +48,9 @@ function createProcess(int $index)
 //Update project from github
 function gitUpdate()
 {
-    $config = json_decode(file_get_contents("/app/config.json"), true);
+    
+    $config = json_decode(file_get_contents("config.json"), true);
+
     $git = $config['git'];
     $remote = "https://" . $git['user'] . ":" . $git['token'] . "@github.com/" . $git['git_dir'];
     exec("cd " . $config['project_dir'] . " && git init && git pull $remote " . $git['branch']);
@@ -55,7 +59,8 @@ function gitUpdate()
 
 function nginxConfig($list)
 {
-    $config = json_decode(file_get_contents("/app/config.json"), true);
+    $config = json_decode(file_get_contents("config.json"), true);
+
     $worker = $config['workers'];
     $nginx = $config['nginx'];
     exec("systemctl disable nginx");
@@ -105,7 +110,6 @@ for ($i = 0; $i < $worker['num']; $i++) {
     $process_list[$i] = createProcess($i);
 }
 
-
 nginxConfig($process_list);
  
 $loop->addPeriodicTimer(1, function () use (&$process_list) {
@@ -122,12 +126,12 @@ $loop->addPeriodicTimer(1, function () use (&$process_list) {
             
         }
     }
-    
 });
 
 $loop->addPeriodicTimer($worker['restart'], function () use (&$process_list) {
     foreach ($process_list as $key => $process) {
         $process_info = proc_get_status($process['process']);
+
         //echo "Restart " . $process_info['pid'] . PHP_EOL;
         $process['in_use'] = true;
         exec('kill ' . $process_info['pid']);
