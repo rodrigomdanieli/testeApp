@@ -17,7 +17,7 @@ class Servers
     /**
      *
      * @Active
-     * @Interval(180)
+     * @Interval(60)
      * @StartRunning
      */
     public function upMysqlGraphic()
@@ -27,8 +27,8 @@ class Servers
     }
 
     /**
-     * @Active
-     * @Interval(180)
+     * @Active 
+     * @Interval(60)
      * @StartRunning
      */
     public function upLinuxGraphic()
@@ -39,7 +39,7 @@ class Servers
 
     /**
      * @Active
-     * @Interval(180)
+     * @Interval(60)
      * @StartRunning
      */
     public function upOracleGraphic()
@@ -50,7 +50,7 @@ class Servers
 
     /**
      * @Active
-     * @Interval(180)
+     * @Interval(60)
      * @StartRunning
      */
     public function upDB2Graphic()
@@ -61,7 +61,7 @@ class Servers
 
     /**
      * @Active
-     * @Interval(180)
+     * @Interval(60)
      * @StartRunning
      */
     public function upMSSQLGraphic()
@@ -119,7 +119,7 @@ class Servers
                             $start = $current_date->modify("-".$period." minutes");
                             $s = $graph->getAllDataGraphicsByType($start->format("Y-m-d H:i:s") , $end, $type);
                             $hash = sha1($type . "_graph_" . $server['server_id'] . "_" . $current_date->format("Y-m-d H:i:s"));
-
+				
                             $cache2->set($hash, $s, 3600);
                             $current_date = $start;
                         }
@@ -171,6 +171,7 @@ class Servers
                     $current_date = $current_date->modify("-".$period." minutes");
                     //$cache->destroy($hash);
                 }
+		
                 if(!empty($temp_data)){
                     $cache->set("last_hour_" . $type . "_graph_" . $server['server_id'], $temp_data, 1800);
                 }
