@@ -250,23 +250,23 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "2.11.3",
+            "version": "2.12.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "fb5d5f2f26babf8dce217b1eb88300c22bb703a4"
+                "reference": "c6d37b4c42aaa3c3ee175f05eca68056f4185646"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/fb5d5f2f26babf8dce217b1eb88300c22bb703a4",
-                "reference": "fb5d5f2f26babf8dce217b1eb88300c22bb703a4",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/c6d37b4c42aaa3c3ee175f05eca68056f4185646",
+                "reference": "c6d37b4c42aaa3c3ee175f05eca68056f4185646",
                 "shasum": ""
             },
             "require": {
                 "doctrine/cache": "^1.0",
                 "doctrine/event-manager": "^1.0",
                 "ext-pdo": "*",
-                "php": "^7.3"
+                "php": "^7.3 || ^8"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^8.1",
@@ -353,7 +353,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-10-20T14:36:48+00:00"
+            "time": "2020-10-22T17:26:24+00:00"
         },
         {
             "name": "doctrine/event-manager",
@@ -566,16 +566,16 @@
         },
         {
             "name": "hti-tecnologia/dbsnoop-library",
-            "version": "0.1.25",
+            "version": "0.1.30",
             "source": {
                 "type": "git",
                 "url": "git@github.com:hti-tecnologia/dbsnoop-library.git",
-                "reference": "92ef9b1f1e1d0cff980060f2b39c00e2035b6a38"
+                "reference": "73c4d5c4326ffe0f38e51af52a5b7b060647287d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hti-tecnologia/dbsnoop-library/zipball/92ef9b1f1e1d0cff980060f2b39c00e2035b6a38",
-                "reference": "92ef9b1f1e1d0cff980060f2b39c00e2035b6a38",
+                "url": "https://api.github.com/repos/hti-tecnologia/dbsnoop-library/zipball/73c4d5c4326ffe0f38e51af52a5b7b060647287d",
+                "reference": "73c4d5c4326ffe0f38e51af52a5b7b060647287d",
                 "shasum": ""
             },
             "require": {
@@ -627,10 +627,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/hti-tecnologia/dbsnoop-library/tree/v0.1.25",
+                "source": "https://github.com/hti-tecnologia/dbsnoop-library/tree/0.1.30",
                 "issues": "https://github.com/hti-tecnologia/dbsnoop-library/issues"
             },
-            "time": "2020-10-20T16:39:59+00:00"
+            "time": "2020-10-23T21:51:44+00:00"
         },
         {
             "name": "neomerx/cors-psr7",
