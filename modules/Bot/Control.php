@@ -27,13 +27,11 @@ class Control extends ServerRequestControl
     public function checkNeedUpdate(): Response\JSON
     {
         $user_id = $this->SESSION['user_id'];
-
-        if($this->REQUEST['bot'] == "graphics"){
+        $auth = array ("graphics", "tickets", "servers");
+        if(in_array($this->REQUEST['bot'],$auth)){
             return new Response\JSON("ok", "need_update");
         }
         return new Response\JSON("ok", "ok");
-
-
     }
 
     
