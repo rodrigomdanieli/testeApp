@@ -1,3 +1,5 @@
 vendor
 configs
 log
+composer.lock
+nohup.out
