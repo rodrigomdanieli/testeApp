@@ -2,12 +2,12 @@
 
 namespace DBModules\Tickets;
 
-use DBSnoop\Entity\Customer;
 use DBSnoop\Annotations\Auth;
 use DBSnoop\Annotations\Needed;
 use DBSnoop\Annotations\Request;
 use DBSnoop\Annotations\Route;
 use DBSnoop\Annotations\Type;
+use DBSnoop\Entity\Customer;
 use DBSnoop\Entity\Handshake;
 use DBSnoop\Entity\Server;
 use DBSnoop\Entity\Ticket;
@@ -15,7 +15,6 @@ use DBSnoop\Entity\User;
 use DBSnoop\Extension\Ticket as ExtensionTicket;
 use DBSnoop\System\Response;
 use DBSnoop\System\ServerRequestControl;
-use DBSnoop\Extension\Server as ExtenionServer;
 
 class Tickets extends ServerRequestControl
 {
@@ -36,7 +35,6 @@ class Tickets extends ServerRequestControl
         return new Response\JSON("ok", array("authorized" => $ticket->checkAuth()));
 
     }
-
 
     /**
      *
@@ -71,7 +69,7 @@ class Tickets extends ServerRequestControl
 
         if (!is_numeric($this->REQUEST['server'])) {
             return new Response\JSON("error", "INVALID_SERVER");
-        }else{
+        } else {
 
             $server = new Server($this->REQUEST['server']);
 
@@ -120,8 +118,6 @@ class Tickets extends ServerRequestControl
             return new Response\JSON("error", "INVALID_TYPE");
         }
 
-
-
         try {
             $tkt = new Ticket();
             $tkt->customer = new Customer($this->REQUEST['customer']);
@@ -163,28 +159,28 @@ class Tickets extends ServerRequestControl
         $value = $this->REQUEST['value'];
         $array_field = array('solicited', 'area', 'team_level', 'priority');
 
-        if(!in_array($this->REQUEST['field'], $array_field)){
+        if (!in_array($this->REQUEST['field'], $array_field)) {
             return new Response\JSON("ok", "INVALID_FIELD");
         }
 
-        if(!is_string($this->REQUEST['value'])){
+        if (!is_string($this->REQUEST['value'])) {
             return new Response\JSON("ok", "INVALID_VALUE");
         }
-        if(!is_numeric($this->REQUEST['id'])){
+        if (!is_numeric($this->REQUEST['id'])) {
             return new Response\JSON("ok", "INVALID_VALUE");
         }
-        
-        if($this->REQUEST['field'] === 'solicited'){
+
+        if ($this->REQUEST['field'] === 'solicited') {
             $value = new User($this->REQUEST['value']);
         }
-        if($this->REQUEST['field'] === 'team_level'){
-            if(!\DBSnoop\Extension\Ticket::checkTeamLevel($this->REQUEST['value']))
-                // $value = $this->REQUEST['value']; 
+        if ($this->REQUEST['field'] === 'team_level') {
+            if (!\DBSnoop\Extension\Ticket::checkTeamLevel($this->REQUEST['value']))
+            // $value = $this->REQUEST['value'];
+            {
                 return new Response\JSON("ok", "INVALID_TEAM_LEVEL");
+            }
+
         }
-
-        
-
 
         try {
 
@@ -205,8 +201,6 @@ class Tickets extends ServerRequestControl
 
     }
 
-
-
     /**
      *
      * @Route("/ticket/change_status")
@@ -220,16 +214,15 @@ class Tickets extends ServerRequestControl
      */
     public function change_status_ticket(): Response\JSON
     {
-   
-        if(!is_numeric($this->REQUEST['id'])){
+
+        if (!is_numeric($this->REQUEST['id'])) {
             return new Response\JSON("ok", "INVALID_ID");
         }
 
-        if(!is_string($this->REQUEST['status'])){
+        if (!is_string($this->REQUEST['status'])) {
             return new Response\JSON("ok", "INVALID_STATUS");
         }
-        
-        
+
         try {
             $user_id = new User($this->SESSION['user_id']);
             $ticket_id = $this->REQUEST['id'];
@@ -246,7 +239,6 @@ class Tickets extends ServerRequestControl
 
     }
 
-
     /**
      *
      * @Route("/ticket/merge_ticket")
@@ -260,34 +252,32 @@ class Tickets extends ServerRequestControl
      */
     public function merge_ticket(): Response\JSON
     {
-   
-        if(!is_numeric($this->REQUEST['master'])){
+
+        if (!is_numeric($this->REQUEST['master'])) {
             return new Response\JSON("ok", "INVALID_MASTER");
         }
 
-        if(!is_numeric($this->REQUEST['to_merge'])){
+        if (!is_numeric($this->REQUEST['to_merge'])) {
             return new Response\JSON("ok", "INVALID_TO_MERGE");
         }
-        
-        
+
         try {
             $user_id = new User($this->SESSION['user_id']);
             $ticket_id = $this->REQUEST['master'];
             $tkt = new Ticket($ticket_id, $user_id);
             $extension = new ExtensionTicket($tkt);
-            
+
             $extension->doMerge(new Ticket($this->REQUEST['to_merge'], $user_id));
 
             return new Response\JSON("ok", "ok");
         } catch (\Exception $th) {
             //var_dump($th->getPrevious());
             return new Response\JSON("ok", $th->getMessage());
-        }catch (\Throwable $th){
+        } catch (\Throwable $th) {
             return new Response\JSON("ok", $th->getMessage());
         }
 
     }
-
 
     /**
      *
@@ -300,11 +290,11 @@ class Tickets extends ServerRequestControl
      * })
      */
     public function ticket_commentary(): Response\JSON
-    {   
-        if(!is_numeric($this->REQUEST['id'])){
+    {
+        if (!is_numeric($this->REQUEST['id'])) {
             return new Response\JSON("ok", "INVALID_ID");
         }
-        
+
         try {
             $user_id = new User($this->SESSION['user_id']);
             $ticket_id = $this->REQUEST['id'];
@@ -322,17 +312,16 @@ class Tickets extends ServerRequestControl
             }
 
             // var_dump($commentary);
-                        
+
             return new Response\JSON("ok", $commentary);
         } catch (\Exception $th) {
             //var_dump($th->getPrevious());
             return new Response\JSON("ok", $th->getMessage());
-        }catch (\Throwable $th){
+        } catch (\Throwable $th) {
             return new Response\JSON("ok", $th->getMessage());
         }
 
     }
-
 
     /**
      *
@@ -345,24 +334,45 @@ class Tickets extends ServerRequestControl
      * })
      */
     public function get_ticket(): Response\JSON
-    {   
-        if(!is_numeric($this->REQUEST['id'])){
+    {
+        if (!is_numeric($this->REQUEST['id'])) {
             return new Response\JSON("ok", "INVALID_ID");
         }
-        
+
         try {
             $user_id = new User($this->SESSION['user_id']);
             $ticket_id = $this->REQUEST['id'];
             $tkt = new Ticket($ticket_id, $user_id);
-                        
+
             return new Response\JSON("ok", $tkt->toArray());
         } catch (\Exception $th) {
             //var_dump($th->getPrevious());
             return new Response\JSON("ok", $th->getMessage());
-        }catch (\Throwable $th){
+        } catch (\Throwable $th) {
             return new Response\JSON("ok", $th->getMessage());
         }
 
     }
 
+    /**
+     *
+     * @Route("/ticket/get_issues_domain")
+     * @Auth("true")
+     * @Type("JSON")
+     * @Request("POST")
+     */
+    public function get_issues_domain(): Response\JSON
+    {
+
+        try {
+            $ext = ExtensionTicket::getIssuesDomain();
+            return new Response\JSON("ok", $ext['data']);
+        } catch (\Exception $th) {
+            //var_dump($th->getPrevious());
+            return new Response\JSON("ok", $th->getMessage());
+        } catch (\Throwable $th) {
+            return new Response\JSON("ok", $th->getMessage());
+        }
+
+    }
 }
