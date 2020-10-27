@@ -7,9 +7,9 @@ use DBSnoop\Annotations\Needed;
 use DBSnoop\Annotations\Request;
 use DBSnoop\Annotations\Route;
 use DBSnoop\Annotations\Type;
-use DBSnoop\Entities\Ticket;
-use DBSnoop\Entities\TicketCommentary as TktCommentary;
-use DBSnoop\Entities\User;
+use DBSnoop\Entity\Ticket;
+use DBSnoop\Entity\TicketCommentary as TktCommentary;
+use DBSnoop\Entity\User;
 use DBSnoop\System\Response;
 use DBSnoop\System\ServerRequestControl;
 
@@ -96,27 +96,27 @@ class TicketCommentary extends ServerRequestControl
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
-     *  "ticket",
+     *  "id",
      *  "comment",
      *  "type",
      *  "time_used"
      * })
      */
-    public function newCommentary(): Response\JSON
+    public function new_commentary(): Response\JSON
     {
         try {
             $ticket_commentary = new TktCommentary();
-
-            $ticket_commentary->setUser(new User($this->SESSION['user_id'], array('not_db' => true, "not_load" => true)));
-            $ticket_commentary->setCommentary($this->REQUEST['comment']);
-            $ticket_commentary->setTime_used($this->REQUEST['time_used']);
-            $ticket_commentary->setTicket(new Ticket($this->REQUEST['ticket'], array("not_load" => true, "not_db" => true)));
-            $ticket_commentary->setType($this->REQUEST['type']);
+            $user = new User($this->SESSION['user_id']);
+            $ticket_commentary->user= $user;
+            $ticket_commentary->commentary = $this->REQUEST['comment'];
+            $ticket_commentary->time_used = $this->REQUEST['time_used'];
+            $ticket_commentary->ticket = new Ticket($this->REQUEST['id'], $user);
+            $ticket_commentary->type = $this->REQUEST['type'];
 
             $saved = $ticket_commentary->save();
 
             if ($saved['status'] == 'ok') {
-                return new Response\JSON("ok", array('msg' => "SAVE Comment!"));
+                return new Response\JSON("ok", "ok");
             } else {
                 return new Response\JSON("error", array('msg' => "Error"));
             }
