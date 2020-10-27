@@ -288,4 +288,81 @@ class Tickets extends ServerRequestControl
 
     }
 
+
+    /**
+     *
+     * @Route("/ticket/get_comments")
+     * @Auth("true")
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     * "id"
+     * })
+     */
+    public function ticket_commentary(): Response\JSON
+    {   
+        if(!is_numeric($this->REQUEST['id'])){
+            return new Response\JSON("ok", "INVALID_ID");
+        }
+        
+        try {
+            $user_id = new User($this->SESSION['user_id']);
+            $ticket_id = $this->REQUEST['id'];
+            $tkt = new Ticket($ticket_id, $user_id);
+            $commentary['comments'] = [];
+
+            foreach ($tkt->getTicket_commentary() as $key => $value_comment) {
+                $commentary['comments'][$key] = $value_comment->toArray();
+                //$commentary['commentary'][$key]['files'] = array();
+                //var_dump($commentary['commentary'][$key]['files']);
+
+                foreach ($value_comment->getFiles() as $file) {
+                    array_push($commentary['comments'][$key]['files'], $file->toArray());
+                }
+            }
+
+            // var_dump($commentary);
+                        
+            return new Response\JSON("ok", $commentary);
+        } catch (\Exception $th) {
+            //var_dump($th->getPrevious());
+            return new Response\JSON("ok", $th->getMessage());
+        }catch (\Throwable $th){
+            return new Response\JSON("ok", $th->getMessage());
+        }
+
+    }
+
+
+    /**
+     *
+     * @Route("/ticket/get")
+     * @Auth("true")
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     * "id"
+     * })
+     */
+    public function get_ticket(): Response\JSON
+    {   
+        if(!is_numeric($this->REQUEST['id'])){
+            return new Response\JSON("ok", "INVALID_ID");
+        }
+        
+        try {
+            $user_id = new User($this->SESSION['user_id']);
+            $ticket_id = $this->REQUEST['id'];
+            $tkt = new Ticket($ticket_id, $user_id);
+                        
+            return new Response\JSON("ok", $tkt->toArray());
+        } catch (\Exception $th) {
+            //var_dump($th->getPrevious());
+            return new Response\JSON("ok", $th->getMessage());
+        }catch (\Throwable $th){
+            return new Response\JSON("ok", $th->getMessage());
+        }
+
+    }
+
 }
