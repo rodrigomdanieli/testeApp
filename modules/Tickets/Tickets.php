@@ -13,7 +13,7 @@ use DBSnoop\Entity\Server;
 use DBSnoop\Entity\Ticket;
 use DBSnoop\Entity\User;
 use DBSnoop\Extension\Ticket as ExtensionTicket;
-use DBSnoop\Entity\TicketCommentary as TktCommentary;
+use DBSnoop\Entity\TicketCommentary;
 use DBSnoop\System\Response;
 use DBSnoop\System\ServerRequestControl;
 
@@ -326,41 +326,6 @@ class Tickets extends ServerRequestControl
 
     /**
      *
-     * @Route("/ticket_commentary/new")
-     * @Auth("true")
-     * @Type("JSON")
-     * @Request("POST")
-     * @Needed({
-     *  "id",
-     *  "comment",
-     *  "type",
-     *  "time_used"
-     * })
-     */
-    public function new_commentary(): Response\JSON
-    {
-        try {
-            $ticket_commentary = new TktCommentary();
-            $user = new User($this->SESSION['user_id']);
-            $ticket_commentary->user = $user;
-            $ticket_commentary->ticket = new Ticket($this->REQUEST['id'], $user);
-            $ticket_commentary->commentary = $this->REQUEST['comment'];
-            $ticket_commentary->time_used = $this->REQUEST['time_used'];
-            $ticket_commentary->type = $this->REQUEST['type'];
-
-            $ticket_commentary->save();
-            return new Response\JSON("ok", "ok");
-        } catch (\Exception $th) {
-            return new Response\JSON("error", $th->getMessage());
-        } catch (\Throwable $th) {
-            return new Response\JSON("ok", $th->getMessage());
-        }
-    }
-
-
-
-    /**
-     *
      * @Route("/ticket/get")
      * @Auth("true")
      * @Type("JSON")
@@ -411,4 +376,24 @@ class Tickets extends ServerRequestControl
         }
 
     }
+
+
+    /**
+     *
+     * @Route("/ticket/get_available_functions")
+     * @Auth("true")
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     *  "id"
+     * })
+     */
+    public function get_available_functions(): Response\JSON
+    {
+        $tkt = new Ticket($this->REQUEST['id'], new User($this->SESSION['user_id']));
+        $ext = new ExtensionTicket($tkt);
+        $functions = $ext->getAvailableFunctions();
+        return new Response\JSON($functions['status'],$functions['data']);
+    }
+    
 }

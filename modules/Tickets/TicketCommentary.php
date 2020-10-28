@@ -107,23 +107,21 @@ class TicketCommentary extends ServerRequestControl
         try {
             $ticket_commentary = new TktCommentary();
             $user = new User($this->SESSION['user_id']);
-            $ticket_commentary->user= $user;
+            $ticket_commentary->user = $user;
+            $ticket_commentary->ticket = new Ticket($this->REQUEST['id'], $user);
             $ticket_commentary->commentary = $this->REQUEST['comment'];
             $ticket_commentary->time_used = $this->REQUEST['time_used'];
-            $ticket_commentary->ticket = new Ticket($this->REQUEST['id'], $user);
             $ticket_commentary->type = $this->REQUEST['type'];
 
-            $saved = $ticket_commentary->save();
-
-            if ($saved['status'] == 'ok') {
-                return new Response\JSON("ok", "ok");
-            } else {
-                return new Response\JSON("error", array('msg' => "Error"));
-            }
-
-        } catch (\Exception $e) {
-            return new Response\JSON("error", $e->getMessage());
+            $ticket_commentary->save();
+            return new Response\JSON("ok", "ok");
+        } catch (\Exception $th) {
+            return new Response\JSON("error", $th->getMessage());
+        } catch (\Throwable $th) {
+            return new Response\JSON("ok", $th->getMessage());
         }
     }
+
+
 
 }
