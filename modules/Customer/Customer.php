@@ -126,7 +126,7 @@ class Customers extends ServerRequestControl
     {
         try {
             $valid_access_hash = ExtensionCustomer::registerSubscriptionCustomer($this->REQUEST['access_hash'], $this->REQUEST['subscription_id']);
-            if($valid_access_hash['status'] != 'ok'){
+            if($valid_access_hash['status'] === 'error'){
                 return new Response\JSON("error", $valid_access_hash['msg']);
             }
 
