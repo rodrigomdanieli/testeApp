@@ -12,6 +12,7 @@ use DBSnoop\Entity\User;
 use DBSnoop\System\Response;
 use DBSnoop\System\ServerRequestControl;
 use DBSnoop\Extension\Customer as ExtensionCustomer;
+use DBSnoop\Controller\Email;
 
 class Customer extends ServerRequestControl
 {
@@ -36,26 +37,65 @@ class Customer extends ServerRequestControl
         
 
         try {
-
+        
+        $email = new Email();
         $user = new User();
-        $user->user_name = $this->REQUEST['user_name'];
+        $user->name = $this->REQUEST['user_name'];
         $user->email = $this->REQUEST['email'];
-        $user->phone = $this->REQUEST['phone'];
-        $user->language = $this->REQUEST['language'];
+        $user->telephone = $this->REQUEST['phone'];
+        $user->preferred_language = $this->REQUEST['language'];
 
         $customer = new Customers();
-        $customer->customer_name = $this->REQUEST['customer_name'];
+        $customer->name = $this->REQUEST['customer_name'];
         $customer->company_code = $this->REQUEST['company_code'];
         $customer->country = $this->REQUEST['country'];
 
-        //ExtensionCustomer::createTemporaryCustomer($customer,$user)
-        //var_dump(ExtensionCustomer::createTemporaryCustomer($customer,$user));
+        if(!ExtensionCustomer::createTemporaryCustomer($customer,$user)){
+            return new Response\JSON("error", "ERROR_CREAT_USER");
+        }
 
-        // if(!ExtensionCustomer::createTemporaryCustomer($customer,$user)){
-        //     return new Response\JSON("error", "ERROR_CREAT_USER");
-        // }
+        $email->addAddress($this->REQUEST['email'], $this->REQUEST['user_name']);
+    
+        $email->Subject = "Cadastro DBSnoop";
 
-            return new Response\JSON("ok", ExtensionCustomer::createTemporaryCustomer($customer,$user));
+        $email->Body = "Essa é a sua senha: " . ExtensionCustomer::createTemporaryCustomer($customer,$user)['validate_code'];
+
+        $email->Send();
+        
+        //var_dump(ExtensionCustomer::createTemporaryCustomer($customer,$user)['validate_code']);
+
+            return new Response\JSON("ok", ExtensionCustomer::createTemporaryCustomer($customer,$user)['access_hash']);
+        } catch (\Exception $th) {
+            //var_dump($th->getPrevious());
+            return new Response\JSON("error", $th->getMessage());
+        } catch (\Throwable $th) {
+            return new Response\JSON("ok", $th->getMessage());
+        }
+
+    }
+
+
+    /**
+     *
+     * @Route("/customer/valid_temp_register")
+     * @Auth("false")
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     * "validate_code",
+     * "access_hash"
+     * })
+     */
+    public function valid_temp_register(): Response\JSON
+    {
+        
+
+        try {
+            if(!ExtensionCustomer::validateHashTempCustomer($this->REQUEST['access_hash'], $this->REQUEST['validate_code'])){
+                return new Response\JSON("error", "INVALID_HASH");
+            }
+
+            return new Response\JSON("ok", "ok");
         } catch (\Exception $th) {
             //var_dump($th->getPrevious());
             return new Response\JSON("error", $th->getMessage());
