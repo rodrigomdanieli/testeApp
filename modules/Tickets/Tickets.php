@@ -133,13 +133,16 @@ class Tickets extends ServerRequestControl
             $tkt->priority = $this->REQUEST['priority'];
             $tkt->type = $this->REQUEST['type'];
 
-            var_dump($tkt->save());
-            new Response\JSON("ok", "ok");
+            $save = $tkt->save();
+            return new Response\JSON("ok", $save['data']);
 
         } catch (\Exception $th) {
             //var_dump($th->getPrevious());
             return new Response\JSON("ok", $th->getMessage());
+        } catch(\Throwable $e){
+            return new Response\JSON('error', $e->getMessage());
         }
+
 
     }
 
