@@ -13,7 +13,6 @@ use DBSnoop\Entity\Server;
 use DBSnoop\Entity\Ticket;
 use DBSnoop\Entity\User;
 use DBSnoop\Extension\Ticket as ExtensionTicket;
-use DBSnoop\Entity\TicketCommentary;
 use DBSnoop\System\Response;
 use DBSnoop\System\ServerRequestControl;
 
@@ -67,25 +66,22 @@ class Tickets extends ServerRequestControl
         if (!is_numeric($this->REQUEST['customer'])) {
             return new Response\JSON("error", "INVALID_CUSTOMER");
         }
+        if (!empty($this->REQUEST['server'])) {
+            if (!is_numeric($this->REQUEST['server'])) {
+                return new Response\JSON("error", "INVALID_SERVER");
+            } else {
 
-        if (!is_numeric($this->REQUEST['server'])) {
-            return new Response\JSON("error", "INVALID_SERVER");
-        } else {
+                $server = new Server($this->REQUEST['server']);
 
-            $server = new Server($this->REQUEST['server']);
-
-            if (!\DBSnoop\Extension\Server::checkService($server, $this->REQUEST['service'])) {
-                return new Response\JSON("error", "INVALID_SERVICE");
+                if (!\DBSnoop\Extension\Server::checkService($server, $this->REQUEST['service'])) {
+                    return new Response\JSON("error", "INVALID_SERVICE");
+                }
             }
         }
 
         // if (!is_numeric($this->REQUEST['solicited'])) {
         //     return new Response\JSON("error", "INTERNAL_ERROR");
         // }
-
-        if (!is_numeric($this->REQUEST['handshake'])) {
-            return new Response\JSON("error", "INVALID_HANDSHAKE");
-        }
 
         if (!in_array($this->REQUEST['area'], $array_area)) {
             return new Response\JSON("error", "INVALID_AREA");
@@ -97,10 +93,6 @@ class Tickets extends ServerRequestControl
 
         if (!is_numeric($this->REQUEST['err_code'])) {
             return new Response\JSON("error", "INVALID_ERR_CODE");
-        }
-
-        if (is_numeric($this->REQUEST['err_info'])) {
-            return new Response\JSON("error", "INVALID_ERR_INFO");
         }
 
         if (!is_numeric($this->REQUEST['team_level'])) {
@@ -117,6 +109,14 @@ class Tickets extends ServerRequestControl
 
         if (!in_array($this->REQUEST['type'], $array_type)) {
             return new Response\JSON("error", "INVALID_TYPE");
+        }
+
+        if ($this->REQUEST['type'] == "Incident") {
+            if (!empty($this->REQUEST['handshake'])) {
+                if (!is_numeric($this->REQUEST['handshake'])) {
+                    return new Response\JSON("error", "INVALID_HANDSHAKE");
+                }
+            }
         }
 
         try {
@@ -377,7 +377,6 @@ class Tickets extends ServerRequestControl
 
     }
 
-
     /**
      *
      * @Route("/ticket/get_available_functions")
@@ -393,7 +392,7 @@ class Tickets extends ServerRequestControl
         $tkt = new Ticket($this->REQUEST['id'], new User($this->SESSION['user_id']));
         $ext = new ExtensionTicket($tkt);
         $functions = $ext->getAvailableFunctions();
-        return new Response\JSON($functions['status'],$functions['data']);
+        return new Response\JSON($functions['status'], $functions['data']);
     }
-    
+
 }
