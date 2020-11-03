@@ -1,6 +1,6 @@
 <?php
 
-namespace DBModules\Register;
+namespace DBModules\Auth;
 
 use DBSnoop\Annotations\Auth;
 use DBSnoop\Annotations\Needed;
