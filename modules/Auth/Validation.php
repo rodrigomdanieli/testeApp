@@ -1,6 +1,6 @@
 <?php
 
-namespace DBModules\Register;
+namespace DBModules\Validation;
 
 use DBSnoop\Annotations\Auth;
 use DBSnoop\Annotations\Needed;
@@ -13,7 +13,7 @@ use DBSnoop\Extension\User as ExtensionUser;
 use DBSnoop\System\Response;
 use DBSnoop\System\ServerRequestControl;
 
-class Register extends ServerRequestControl
+class Validation extends ServerRequestControl
 {
     /**
      *
