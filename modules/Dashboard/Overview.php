@@ -19,7 +19,7 @@ class Overview extends ServerRequestControl
     /**
      *
      * @Route("/overview/get_alert_graphic")
-     * @Auth("true")
+     * @Auth(true)
      *
      */
     public function alertGraphic(): Response\JSON

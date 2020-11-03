@@ -19,7 +19,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/bot/list_opened_ticket")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */
@@ -40,7 +40,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/bot/list_closed_ticket")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */
@@ -61,7 +61,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/bot/get_sla_tickets")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */

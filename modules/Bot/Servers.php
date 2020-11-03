@@ -17,7 +17,7 @@ class Servers extends ServerRequestControl
     /**
      *
      * @Route("/bot/list_servers")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */
@@ -37,7 +37,7 @@ class Servers extends ServerRequestControl
     /**
      *
      * @Route("/bot/list_servers_status")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */

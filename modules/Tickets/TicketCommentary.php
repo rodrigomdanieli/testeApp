@@ -19,7 +19,7 @@ class TicketCommentary extends ServerRequestControl
     /**
      *
      * @Route("/ticket_commentary/get")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -59,7 +59,7 @@ class TicketCommentary extends ServerRequestControl
     /**
      *
      * @Route("/ticket_commentary/getFiles")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -92,7 +92,7 @@ class TicketCommentary extends ServerRequestControl
     /**
      *
      * @Route("/ticket_commentary/new")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({

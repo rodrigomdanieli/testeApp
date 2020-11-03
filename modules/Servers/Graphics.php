@@ -17,7 +17,7 @@ class Graphics extends ServerRequestControl
     /**
      *
      * @Route("/server/get_list_status_graphics")
-     * @Auth("true")
+     * @Auth(true)
      *
      */
     public function getListStatusGraph(): Response\JSON

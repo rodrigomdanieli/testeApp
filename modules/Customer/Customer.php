@@ -19,7 +19,7 @@ class Customer extends ServerRequestControl
     /**
      *
      * @Route("/customer/temp_register")
-     * @Auth("false")
+     * @Auth(false)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -83,7 +83,7 @@ class Customer extends ServerRequestControl
     /**
      *
      * @Route("/customer/valid_temp_register")
-     * @Auth("false")
+     * @Auth(false)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -114,7 +114,7 @@ class Customer extends ServerRequestControl
     /**
      *
      * @Route("/customer/register_subscription")
-     * @Auth("false")
+     * @Auth(false)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({

@@ -22,7 +22,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/ticket/check_authorized")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -39,7 +39,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/ticket/new")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -154,7 +154,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/ticket/update")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -213,7 +213,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/ticket/change_status")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -251,7 +251,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/ticket/merge_ticket")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -291,7 +291,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/ticket/get_comments")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -335,7 +335,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/ticket/get")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -366,7 +366,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/ticket/get_issues_domain")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */
@@ -388,7 +388,7 @@ class Tickets extends ServerRequestControl
     /**
      *
      * @Route("/ticket/get_available_functions")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({

@@ -19,7 +19,7 @@ class Graphics extends ServerRequestControl
     /**
      *
      * @Route("/bot/last_hour_server_graph")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */
@@ -58,7 +58,7 @@ class Graphics extends ServerRequestControl
     /**
      *
      * @Route("/bot/get_available_server_graphics")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */

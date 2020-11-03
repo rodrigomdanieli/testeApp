@@ -17,7 +17,7 @@ class Groups extends ServerRequestControl
     /**
      *
      * @Route("/bot/list_server_groups")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */
@@ -98,7 +98,7 @@ class Groups extends ServerRequestControl
     /**
      *
      * @Route("/bot/list_groups")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */

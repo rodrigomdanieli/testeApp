@@ -16,7 +16,7 @@ class Control extends ServerRequestControl
     /**
      *
      * @Route("/bot/need_update")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Needed({
      *  "bot"

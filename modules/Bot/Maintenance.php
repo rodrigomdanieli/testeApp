@@ -16,7 +16,7 @@ class Maintenance extends ServerRequestControl
     /**
      *
      * @Route("/bot/list_maintenance")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */

@@ -17,7 +17,7 @@ class ListTicket extends ServerRequestControl
     /**
      *
      * @Route("/ticket/list")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({

@@ -17,7 +17,7 @@ class Customer extends ServerRequestControl
     /**
      *
      * @Route("/bot/customer_info")
-     * @Auth("true")
+     * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
      */

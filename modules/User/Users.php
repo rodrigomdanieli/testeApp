@@ -17,7 +17,7 @@ class Users extends ServerRequestControl
     /**
      *
      * @Route("/user/get_info")
-     * @Auth("false")
+     * @Auth(false)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -41,7 +41,7 @@ class Users extends ServerRequestControl
     }
     /*
      * @Route("/user/create_first_password")
-     * @Auth("false")
+     * @Auth(false)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
