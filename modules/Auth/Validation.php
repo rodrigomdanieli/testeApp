@@ -28,7 +28,7 @@ class Validation extends ServerRequestControl
     public function valid_email_domain(): Response\JSON
     {
         $email = $this->REQUEST['email'];
-        if(!empty($email)){
+        if(empty($email)){
             return new Response\JSON("error", "EMPTY_EMAIL_FIELD");
         }
 
