@@ -19,7 +19,7 @@ class Register extends ServerRequestControl
     /**
      *
      * @Route("/auth/temp_register")
-     * @Auth("false")
+     * @Auth(false)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -83,7 +83,7 @@ class Register extends ServerRequestControl
     /**
      *
      * @Route("/auth/valid_temp_register")
-     * @Auth("false")
+     * @Auth(false)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -114,7 +114,7 @@ class Register extends ServerRequestControl
     /**
      *
      * @Route("/auth/register_subscription")
-     * @Auth("false")
+     * @Auth(false)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({

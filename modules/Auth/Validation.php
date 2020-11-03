@@ -7,8 +7,6 @@ use DBSnoop\Annotations\Needed;
 use DBSnoop\Annotations\Request;
 use DBSnoop\Annotations\Route;
 use DBSnoop\Annotations\Type;
-use DBSnoop\Entity\Customer;
-use DBSnoop\Entity\User;
 use DBSnoop\Extension\User as ExtensionUser;
 use DBSnoop\System\Response;
 use DBSnoop\System\ServerRequestControl;
@@ -18,7 +16,7 @@ class Validation extends ServerRequestControl
     /**
      *
      * @Route("/auth/valid_email_domain")
-     * @Auth("false")
+     * @Auth(false)
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
@@ -27,16 +25,16 @@ class Validation extends ServerRequestControl
      */
     public function valid_email_domain(): Response\JSON
     {
-        $email = $this->REQUEST['email'];
-        if(empty($email)){
-            return new Response\JSON("error", "EMPTY_EMAIL_FIELD");
-        }
-
-        if(!ExtensionUser::validUserEmail($email)){
-            return new Response\JSON("ok", "INVALID_EMAIL");
-        }
 
         try {
+            $email = $this->REQUEST['email'];
+            if (empty($email)) {
+                return new Response\JSON("error", "EMPTY_EMAIL_FIELD");
+            }
+
+            if (!ExtensionUser::validUserEmail($email)) {
+                return new Response\JSON("ok", "INVALID_EMAIL");
+            }
             return new Response\JSON("ok", "VALID_EMAIL");
         } catch (\Exception $th) {
             //var_dump($th->getPrevious());
