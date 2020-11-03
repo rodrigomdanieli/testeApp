@@ -39,7 +39,8 @@ class Users extends ServerRequestControl
         }
 
     }
-    /*
+    
+    /** 
      * @Route("/user/create_first_password")
      * @Auth(false)
      * @Type("JSON")
@@ -48,7 +49,7 @@ class Users extends ServerRequestControl
      * "access_hash",
      * "new_password"
      * })
-     **/
+     */
     public function create_first_password(): Response\JSON
     {
         $hash = $this->REQUEST['access_hash'];
