@@ -33,7 +33,7 @@ class Validation extends ServerRequestControl
         }
 
         if(!ExtensionUser::validUserEmail($email)){
-            return new Response\JSON("error", "INVALID_EMAIL");
+            return new Response\JSON("ok", "INVALID_EMAIL");
         }
 
         try {
