@@ -1,20 +1,20 @@
 <?php
 
-namespace DBModules\Customers;
+namespace DBModules\Customer;
 
 use DBSnoop\Annotations\Auth;
 use DBSnoop\Annotations\Needed;
 use DBSnoop\Annotations\Request;
 use DBSnoop\Annotations\Route;
 use DBSnoop\Annotations\Type;
-use DBSnoop\Entity\Customer;
+use DBSnoop\Entity\Customer as ECustomer;
 use DBSnoop\Entity\User;
 use DBSnoop\System\Response;
 use DBSnoop\System\ServerRequestControl;
 use DBSnoop\Extension\Customer as ExtensionCustomer;
 use DBSnoop\Controller\Email;
 
-class Customers extends ServerRequestControl
+class Customer extends ServerRequestControl
 {
     /**
      *
@@ -45,7 +45,7 @@ class Customers extends ServerRequestControl
         $user->telephone = $this->REQUEST['phone'];
         $user->preferred_language = $this->REQUEST['language'];
 
-        $customer = new Customer();
+        $customer = new ECustomer();
         $customer->name = $this->REQUEST['customer_name'];
         $customer->company_code = $this->REQUEST['company_code'];
         $customer->country = $this->REQUEST['country'];
