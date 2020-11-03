@@ -66,6 +66,11 @@ class Tickets extends ServerRequestControl
         if (!is_numeric($this->REQUEST['customer'])) {
             return new Response\JSON("error", "INVALID_CUSTOMER");
         }
+        
+        if (!empty($this->REQUEST['customer'])) {
+            return new Response\JSON("error", "EMPTY_CUSTOMER_FIELD");
+        }
+
         if (!empty($this->REQUEST['server'])) {
             if (!is_numeric($this->REQUEST['server'])) {
                 return new Response\JSON("error", "INVALID_SERVER");
