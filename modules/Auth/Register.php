@@ -214,4 +214,36 @@ class Register extends ServerRequestControl
         }
 
     }
+
+    /**
+     *
+     * @Route("/auth/valid_access_hash")
+     * @Auth(false)
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     * "access_hash"
+     * })
+     */
+    public function valid_access_hash(): Response\JSON
+    {   
+        try {
+            $value_extension = ExtensionCustomer::getTempRegisterInformation($this->REQUEST['access_hash']);
+
+            if($value_extension['status'] != 'error'){
+                return new Response\JSON("ok", "VALID_HASH");
+            }
+            return new Response\JSON("error", "INVALID_ACCESS_HASH");
+            
+        } catch (\Exception $th) {
+            return new Response\JSON("error", $th->getMessage());
+        }catch(\PHPMailer\PHPMailer\Exception $e){
+            return new Response\JSON("error", $e->getMessage());
+        } catch (\Throwable $th) {
+            return new Response\JSON("error", $th->getMessage());
+        }
+
+    }
+
+
 }

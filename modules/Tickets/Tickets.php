@@ -63,13 +63,14 @@ class Tickets extends ServerRequestControl
         $array_type = array('Incident', 'Request', 'Emergency', 'Maintenance', 'Email', 'Monitoring', 'Coordination');
         $server = new Server;
 
+        if (empty($this->REQUEST['customer'])) {
+            return new Response\JSON("error", "EMPTY_CUSTOMER_FIELD");
+        }
+        
         if (!is_numeric($this->REQUEST['customer'])) {
             return new Response\JSON("error", "INVALID_CUSTOMER");
         }
         
-        if (!empty($this->REQUEST['customer'])) {
-            return new Response\JSON("error", "EMPTY_CUSTOMER_FIELD");
-        }
 
         if (!empty($this->REQUEST['server'])) {
             if (!is_numeric($this->REQUEST['server'])) {
