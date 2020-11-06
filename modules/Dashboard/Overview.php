@@ -24,11 +24,14 @@ class Overview extends ServerRequestControl
      */
     public function alertGraphic(): Response\JSON
     {
-
-        $data = Server::getAlertsGraphic(new User($this->SESSION['user_id']));
-        return new Response\JSON($data['status'], $data['data']);
-        
-
+        try{
+            $data = Server::getAlertsGraphic(new User($this->SESSION['user_id']));
+            return new Response\JSON($data['status'], $data['data']);
+        }catch(\Throwable $e){
+            return new Response\JSON("error", $e->getMessage());
+        }catch(\Exception $e){
+            return new Response\JSON("error", $e->getMessage());
+        }
     }
 
 }
