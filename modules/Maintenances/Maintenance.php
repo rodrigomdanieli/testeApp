@@ -75,9 +75,8 @@ class Maintenance extends ServerRequestControl
             $maintenance->reason = $this->REQUEST['reason'];
             $maintenance->alert = $this->REQUEST['alert'];
             $maintenance->schema = $this->REQUEST['schema'];
-            var_dump($maintenance->save());
-
-            return new Response\JSON("ok", "ok");
+            $save = $maintenance->save();
+            return new Response\JSON("ok", $save['data']);
         } catch (\Throwable $th) {
             return new Response\JSON("error", $th->getMessage());
         }
