@@ -59,9 +59,9 @@ class Register extends ServerRequestControl
 
         $email->addAddress($this->REQUEST['email'], $this->REQUEST['user_name']);
     
-        $email->Subject = "Cadastro DBSnoop";
+        $email->Subject = "DBSnoop Registration";
 
-        $email->Body = "Código de validação DBSnoop: " . $valid_extension_customer['validate_code'];
+        $email->Body = "Validation code DBSnoop: " . $valid_extension_customer['validate_code'];
 
         $email->Send();
         
