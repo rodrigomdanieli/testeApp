@@ -1,0 +1,27 @@
+{
+    "language": {
+        "pt" : {
+            "label" : "Português",
+            "abbr"  : "PT-br",
+            "locale": "pt-br"
+        },
+        "en" : {
+            "label" : "Inglês",
+            "abbr"  : "EN-us",
+            "locale": "en"
+        },
+        "es" : {
+            "label" : "Espanhol",
+            "abbr"  : "ES-es",
+            "locale": "es"
+        }
+    },
+    "lbl" : {
+        "servers"   : "Servidores",
+        "alerts"     : "Alertas",
+        "criticals"  : "Criticos",
+        "warnings"   : "Avisos",
+        "maintenances"   : "Manutenções",
+        "total_tickets" : "Total de Tickets"
+    }
+}

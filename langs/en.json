@@ -1,0 +1,39 @@
+{
+    "language": {
+        "pt": {
+            "label": "Portuguese",
+            "abbr": "PT-br",
+            "locale": "pt-br"
+        },
+        "en": {
+            "label": "English",
+            "abbr": "EN-us",
+            "locale": "en"
+        },
+        "es": {
+            "label": "Spanish",
+            "abbr": "ES-es",
+            "locale": "es"
+        }
+    },
+    "lbl": {
+        "servers": "Servers",
+        "alerts": "Alerts",
+        "criticals": "Criticals",
+        "warnings": "Warinings",
+        "maintenances": "Maintenances",
+        "total_tickets": "Tickets",
+        "connections": "Connections",
+        "cpu_use":"CPU",
+        "io_wait":"Wait I/O",
+        "mysqld_watch":"MySQL Watch",
+        "qps":"QPS",
+        "memory":"Memory",
+        "kbytes_transfer":"Transfer",
+        "disk_space": "Disk",
+        "mssqld_watch": "MSSQL Watch",
+        "slave_lag": "Slave Lag",
+        "swap": "Swap",
+        "load": "Load"
+    }
+}
