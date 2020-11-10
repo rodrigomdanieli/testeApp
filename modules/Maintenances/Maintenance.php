@@ -60,7 +60,7 @@ class Maintenance extends ServerRequestControl
             return new Response\JSON("error", "INVALID_RECURRENT");
         }
 
-        if(!is_numeric($this->REQUEST['alert'])){
+        if(!empty($this->REQUEST['alert']) && !is_numeric($this->REQUEST['alert'])){
             return new Response\JSON("error", "INVALID_ALERT");
         }
 
