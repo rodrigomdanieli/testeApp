@@ -1,6 +1,6 @@
 <?php
 
-namespace DBModules\Group;
+namespace DBModules\Groups;
 
 use DBSnoop\Annotations\Auth;
 use DBSnoop\Annotations\Needed;
@@ -23,7 +23,7 @@ class Groups extends ServerRequestControl
      * @Request("POST")
      * @Type("JSON")
      * @Needed({
-     * "customre",
+     * "customer",
      * "name",
      * "priority"
      * })
@@ -47,7 +47,7 @@ class Groups extends ServerRequestControl
             
         $user = new User($this->SESSION['user_id']);
         $group = new Group($user);
-        $group->customer = new Customer($group, $user);
+        $group->customer = new Customer($this->REQUEST['customer'], $user);
         $group->name = $field_name;
         $group->priority = $field_priority;
 
@@ -66,7 +66,7 @@ class Groups extends ServerRequestControl
      * 
      * @Route("/groups/update")
      * @Auth(true)
-     * @Request("GET")
+     * @Request("POST")
      * @Type("JSON")
      * @Needed({
      * "field",
@@ -93,9 +93,40 @@ class Groups extends ServerRequestControl
             $group = new Group($user, $group_id);
 
             $group->{$field_value} = $value;
-            
+            $group->save();
     
         return new Response\JSON("ok", "ok");
+        } catch (\Throwable $th) {
+            return new Response\JSON("error", $th->getMessage());
+        }
+
+    }
+
+
+    /**
+     * 
+     * @Route("/groups/get")
+     * @Auth(true)
+     * @Request("POST")
+     * @Type("JSON")
+     * @Needed({
+     * "id"
+     * })
+     */
+    public function get_group(): Response\JSON
+    {
+        if (!is_numeric($this->REQUEST['id'])) {
+            return new Response\JSON("ok", "INVALID_ID");
+        }
+
+        try {
+            $user = new User($this->SESSION['user_id']);
+
+            $group = new Group($user, $this->REQUEST['id']);
+
+            
+    
+            return new Response\JSON("ok", $group->toArray());
         } catch (\Throwable $th) {
             return new Response\JSON("error", $th->getMessage());
         }
