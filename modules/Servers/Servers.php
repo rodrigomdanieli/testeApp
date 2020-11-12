@@ -173,7 +173,7 @@ class Servers extends ServerRequestControl
      * })
      *
      */
-    public function downloadTutorialSO(): Response\File
+    public function downloadTutorialSO(): Response\FILE
     {
 
         $return = ExtensionServer::getTutorialSOSessionServer($this->REQUEST['hash']);
@@ -196,7 +196,7 @@ class Servers extends ServerRequestControl
      * })
      *
      */
-    public function downloadTutorialDB(): Response\File
+    public function downloadTutorialDB(): Response\FILE
     {
 
         $return = ExtensionServer::getTutorialDBSessionServer($this->REQUEST['hash']);
