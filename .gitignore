@@ -3,3 +3,4 @@ configs
 log
 composer.lock
 nohup.out
+composer.lock
