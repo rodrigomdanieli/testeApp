@@ -28,8 +28,8 @@ class Servers extends ServerRequestControl
      *  "customer",
      *  "group",
      *  "db_type",
-     *  "so_type"
-     *
+     *  "so_type",
+     *  "server_name"
      * })
      *
      */
@@ -40,6 +40,12 @@ class Servers extends ServerRequestControl
             $group = null;
             $customer = null;
             $user = new User($this->SESSION['user_id']);
+            $server_name = $this->REQUEST['server_name'];//variável do server name 
+
+            //validação do server name caso seja vázio
+            if(empty($server_name)){
+                return new Response\JSON("error", "INVALID_SERVER_NAME");
+            }
 
             if (empty($this->REQUEST['customer']) || !is_numeric($this->REQUEST['customer'])) {
                 return new Response\JSON("error", "INVALID_CUSTOMER");
@@ -68,6 +74,10 @@ class Servers extends ServerRequestControl
             }
             if (!empty($this->REQUEST['db_type'])) {
                 $server->db_type = $this->REQUEST['db_type'];
+            }
+            //validação do server name caso seja diferente de vázio
+            if(!empty($server_name)){
+                $server->name = $server_name;
             }
 
             $hash = ExtensionServer::startNewServerSession($server);
