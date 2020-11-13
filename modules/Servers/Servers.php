@@ -175,7 +175,7 @@ class Servers extends ServerRequestControl
     /**
      *
      * @Route("/server/session/get_tutorial_so")
-     * @Auth(true)
+     * @Auth(false)
      * @Type("FILE")
      * @Request("GET")
      * @Needed({
@@ -198,7 +198,7 @@ class Servers extends ServerRequestControl
     /**
      *
      * @Route("/server/session/get_tutorial_db")
-     * @Auth(true)
+     * @Auth(false)
      * @Type("FILE")
      * @Request("GET")
      * @Needed({
