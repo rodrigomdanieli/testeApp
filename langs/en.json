@@ -17,6 +17,7 @@
         }
     },
     "lbl": {
+        "loading"   : "Loading",
         "servers": "Servers",
         "alerts": "Alerts",
         "criticals": "Criticals",
@@ -58,12 +59,12 @@
         "cancel": "Cancel",
         "create": "Create",
         "error": "Error",
-        "accont_login" : "Account Login",
+        "account_login" : "Account Login",
         "username" : "Username",
         "password" : "Password",
         "caps_lock_on" : "Caps lock is On",
         "login" : "Login",
-        "forgot_passwor" : "Forgot Password?",
+        "forgot_password" : "Forgot Password?",
         "not_a_member" : "Not a Member?",
         "sign_up" : "Sign Up Now!",
         "next" : "Next",
@@ -75,7 +76,8 @@
         "close" : "Close",
         "resend" : "Resend",
         "confirm_password" : "Confirm Password",
-        "finish" : "Finish"
+        "finish" : "Finish",
+        "in_maintenance" : "Under Maintenance"
 
     },
     "tkt": {
@@ -132,7 +134,8 @@
         "invalid_password_1" : "Minimum of 8 characters!",
         "invalid_password_2" : "Must contain number,  upper and lower case letters!",
         "invalid_password_3" : "Passwords do not match!",
-        "not_empty" : "Can not be empty!"
+        "not_empty" : "Can not be empty!",
+        "unallowed_server" : "Unallowed Server!"
     },
     "txt":{
         "plan_txt_1" : "This account is not associated with any plan!",
@@ -141,6 +144,30 @@
         "singup_txt_1" : "The validation code was sent to your email!",
         "singup_txt_2" : "Create new password!",
         "singup_txt_3" : "Registration successful!"
+    },
+    "scs":{
+        "create_maintenance" : "Maintenance #[MAIN_ID] has been created!",
+        "create_ticket" : "Ticket #[TKT_ID] has been created!"
+    },
+    "srv": {
+        "server_ok" : "Server OK!",
+        "service.mysql" : "Mysql",
+        "service.linux" : "Linux",
+        "alert.threads" : "Threads",
+        "alert.db_status" : "Status DB",
+        "alert.replication" : "Replication",
+        "alert.availability" : "Availability",
+        "alert.disk" : "Disk",
+        "alert.cpu" : "CPU",
+        "disabled" : "Disabled",
+        "filter" : "Filter",
+        "select" : "Select",
+        "status.N" : "Disabled",
+        "status.G" : "OK",
+        "status.B" : "Maintenance",
+        "status.Y" : "Warning",
+        "status.R" : "Critical",
+        "alert.memory" : "Memory"
     },
     "alert":{
         "NO_MEMORY_USAGE_DATA": "No memory usage information",

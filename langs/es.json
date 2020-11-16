@@ -18,6 +18,7 @@
         }
     },
     "lbl" : {
+        "loading"   : "Cargando",
         "servers"   : "Servidores",
         "alerts"     : "Alertas",
         "criticals"  : "Criticos",
@@ -64,7 +65,7 @@
         "password" : "Contraseña",
         "caps_lock_on" : "El bloqueo de mayúsculas está activado",
         "login" : "Iniciar sesión",
-        "forgot_passwor" : "¿Olvidaste tu contraseña?",
+        "forgot_password" : "¿Olvidaste tu contraseña?",
         "not_a_member" : "¿No es miembro?",
         "sign_up" : "¡Regístrate ahora!",
         "next" : "Siguiente",
@@ -76,7 +77,8 @@
         "close" : "Cerrrar",
         "resend" : "Reenviar",
         "confirm_password" : "Confirmar contraseña",
-        "finish" : "Terminar"
+        "finish" : "Terminar",
+        "in_maintenance" : "En Mantenimiento"
 
     },
     "tkt": {
@@ -131,7 +133,8 @@
         "invalid_password_1" : "¡Mínimo de 8 caracteres!",
         "invalid_password_2" : "¡Debe contener números, letras mayúsculas y minúsculas!",
         "invalid_password_3" : "¡Las contraseñas no coinciden!",
-        "not_empty" : "¡No puede estar vacío!"
+        "not_empty" : "¡No puede estar vacío!",
+        "unallowed_server" : "¡Servidor no permitido!"
     },
     "txt":{
         "plan_txt_1" : "¡Esta cuenta no está asociada a ningún plan!",
@@ -140,6 +143,30 @@
         "singup_txt_1" : "¡El código de validación fue enviado a su correo electrónico!",
         "singup_txt_2" : "¡Crear nueva contraseña!",
         "singup_txt_3" : "¡Registro exitoso!"
+    },
+    "scs":{
+        "create_maintenance" : "Mantenimiento #[MAIN_ID] ¡Ha sido creado!",
+        "create_ticket" : "Boleto #[TKT_ID] ha sido creado!"
+    },
+    "srv": {
+        "server_ok" : "¡Servidor OK!",
+        "service.mysql" : "Mysql",
+        "service.linux" : "Linux",
+        "alert.threads" : "Threads",
+        "alert.db_status" : "Status BD",
+        "alert.replication" : "Replicación",
+        "alert.availability" : "Disponibilidad",
+        "alert.disk" : "Disco",
+        "alert.cpu" : "CPU",
+        "disabled" : "Disabled",
+        "filter" : "Filtro",
+        "select" : "Seleccionar",
+        "status.N" : "Disabled",
+        "status.G" : "OK",
+        "status.B" : "Mantenimiento",
+        "status.Y" : "Atención",
+        "status.R" : "Crítico",
+        "alert.memory" : "Memoria"
     },
     "alert":{
         "NO_MEMORY_USAGE_DATA"             : "No hay información de uso de memoria",

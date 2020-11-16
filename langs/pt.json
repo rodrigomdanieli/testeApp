@@ -17,6 +17,7 @@
         }
     },
     "lbl" : {
+        "loading"   : "Carregando",
         "servers"   : "Servidores",
         "alerts"     : "Alertas",
         "criticals"  : "Criticos",
@@ -63,7 +64,7 @@
         "password" : "Senha",
         "caps_lock_on" : "Caps lock está ativado",
         "login" : "Login",
-        "forgot_passwor" : "Esqueceu a senha?",
+        "forgot_password" : "Esqueceu a senha?",
         "not_a_member" : "Não é membro?",
         "sign_up" : "Inscreva-se agora!",
         "next" : "Próximo",
@@ -75,7 +76,8 @@
         "close" : "Fechar",
         "resend" : "Reenviar",
         "confirm_password" : "Confirme a senha",
-        "finish" : "Terminar"
+        "finish" : "Terminar",
+        "in_maintenance" : "Em Manutenção"
 
     },
     "tkt": {
@@ -130,7 +132,8 @@
         "invalid_password_1" : "Mínimo de 8 caracteres!",
         "invalid_password_2" : "Deve conter números, letras maiúsculas e minúsculas!",
         "invalid_password_3" : "As senhas não correspondem!",
-        "not_empty" : "Não pode estar vazio!"
+        "not_empty" : "Não pode estar vazio!",
+        "unallowed_server" : "Servidor não permitido!"
     },
     "txt":{
         "plan_txt_1" : "Esta conta não está associada a nenhum plano!",
@@ -139,6 +142,30 @@
         "singup_txt_1" : "O código de validação foi enviado para o seu e-mail!",
         "singup_txt_2" : "Crie uma nova senha!",
         "singup_txt_3" : "Registro bem-sucedido!"
+    },
+    "scs": {
+        "create_maintenance" : "Manutenção #[MAIN_ID] foi criado!",
+        "create_ticket" : "Ticket #[TKT_ID] foi criado!"
+    },
+    "srv": {
+        "server_ok" : "Servidor OK!",
+        "service.mysql" : "Mysql",
+        "service.linux" : "Linux",
+        "alert.threads" : "Threads",
+        "alert.db_status" : "Status BD",
+        "alert.replication" : "Replicação",
+        "alert.availability" : "Disponibilidade",
+        "alert.disk" : "Disco",
+        "alert.cpu" : "CPU",
+        "disabled" : "Desabilitado",
+        "filter" : "Filtro",
+        "select" : "Selecione",
+        "status.N" : "Desabilitado",
+        "status.G" : "OK",
+        "status.B" : "Manutenção",
+        "status.Y" : "Atenção",
+        "status.R" : "Crítico",
+        "alert.memory" : "Memória"
     },
     "alert": {
 
