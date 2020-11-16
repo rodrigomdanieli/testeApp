@@ -179,9 +179,7 @@ class Servers extends ServerRequestControl
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
-     *  "hash",
-     *  "host",
-     *  "port"
+     *  "hash"
      * })
      *
      */
@@ -208,9 +206,7 @@ class Servers extends ServerRequestControl
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
-     *  "hash",
-     *  "host",
-     *  "port"
+     *  "hash"
      * })
      *
      */
