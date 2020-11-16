@@ -57,7 +57,25 @@
         "service": "Service",
         "cancel": "Cancel",
         "create": "Create",
-        "error": "Error"
+        "error": "Error",
+        "accont_login" : "Account Login",
+        "username" : "Username",
+        "password" : "Password",
+        "caps_lock_on" : "Caps lock is On",
+        "login" : "Login",
+        "forgot_passwor" : "Forgot Password?",
+        "not_a_member" : "Not a Member?",
+        "sign_up" : "Sign Up Now!",
+        "next" : "Next",
+        "complete_name" : "Complete Name",
+        "email" : "Email",
+        "customer_name" : "Customer Name",
+        "company_code" : "Company Code",
+        "terms_of_service" : "Terms of Service",
+        "close" : "Close",
+        "resend" : "Resend",
+        "confirm_password" : "Confirm Password",
+        "finish" : "Finish"
 
     },
     "tkt": {
@@ -102,6 +120,27 @@
         "weekly": "Weekly",
         "monthly": "Monthly",
         "yearly": "Yearly"
+    },
+    "err":{
+        "invalid_username" : "Please enter the correct username",
+        "invalid_username_2" : "Please enter the correct username (2 or more names)",
+        "invalid_username_password" : "Invalid Username or Password",
+        "invalid_email_format" : "Email format Invalid!",
+        "invalid_email_domain" : "Email or domain already register!",
+        "invalid_terms_of_service" : "You need accept the terms of service!",
+        "invalid_format" : "Invalid Format!",   
+        "invalid_password_1" : "Minimum of 8 characters!",
+        "invalid_password_2" : "Must contain number,  upper and lower case letters!",
+        "invalid_password_3" : "Passwords do not match!",
+        "not_empty" : "Can not be empty!"
+    },
+    "txt":{
+        "plan_txt_1" : "This account is not associated with any plan!",
+        "plan_txt_2" : "Please complete the registration to access DBSnoop!",
+        "terms_service_1" : "I agree to the",
+        "singup_txt_1" : "The validation code was sent to your email!",
+        "singup_txt_2" : "Create new password!",
+        "singup_txt_3" : "Registration successful!"
     },
     "alert":{
         "NO_MEMORY_USAGE_DATA": "No memory usage information",
@@ -164,7 +203,6 @@
         "_NEW_ALERT_COMMENT_NO_DISK_USAGE_DATA"  : "No disk usage information",
         "CPU_LOAD_HIGH"                     : "Load high",
         "CPU_LOAD_LATE"                     : "Delayed data (load)",
-        "CPU_LOAD_DATA_LATE"                : "Delayed Data (CPU Load)",
         "DISK_USAGE_HIGH"                   : "High disk usage",
         "DISK_USAGE_LATE"                   : "Delayed data (disk usage)",
         "SWAP_USAGE_HIGH"                   : "High usage of swap",
@@ -336,7 +374,6 @@
         "CONNECTIONS_CRITICAL;"     : "Critical number of connections",
         "CONNECTIONS_HIGH;"         : "High number of connections",
         "CONNECTIONS_LATE;"         : "Delayed Data (Connections)",
-        "CPU_LOAD_DATA_LATE;"       : "Delayed Data (CPU Load)",
         "CAPTURE_FAILED"            : "Capture failure",
         "FALSE_POSITIVE"            : "I.A. Analysis indicates that this ticket is a false positive",
         "NOT_A_SPIKE_DETECTED"      : "I.A. Analysis indicates that a momentary peak was not detected, or that the recurrence of the ticket indicates the need for in-depth analysis (Peaks detected during the analysis: [pico]| Recurrence on the spot: [short]| Recurrence at 12h: [mid]| Recurrence in 24h: [long])",
@@ -362,7 +399,6 @@
         "DATADIR_USAGE_CRITICAL"       : "Critical data directory usage",
         "NO_LOGDIR_INFO"               : "Failed to capture logs directory info",
         "LOGDIR_USAGE_HIGH"            : "High logs directory usage",
-        "LOGDIR_USAGE_CRITICAL"        : "Critical logs directory usage",
         "NO_REPLICATION_STATUS"        : "Failed to capture replication info",
         "REPLICATION_DELAY_HIGH"       : "High replication delay",
         "REPLICATION_DELAY_CRITICAL"   : "Critical replication delay",
@@ -370,7 +406,6 @@
         "NO_CPU_INFO"                  : "Failed to capture CPU info",
         "CPU_USAGE_HIGH"               : "High CPU usage",
         "CPU_USAGE_LATE"               : "Delayed Data (CPU Usage)",
-        "CPU_WAIT_HIGH"                : "High CPU wait",
         "CPU_USAGE_CRITICAL"           : "Critical CPU usage",
         "CPU_WAIT_CRITICAL"            : "Critical CPU wait",
         "SERVER_MAINTENANCE"           : "Scheduled maintenance in progress",
@@ -410,7 +445,6 @@
         "NO_DISK_CAPTURE"              : "No disk capture",
         "CPU_WAIT_HIGH"                : "High I / O Wait",
         "LOGDIR_USAGE_CRITICAL"        : "Critical use of the log directory",
-        "LONG_TRX_HIGH"                : "Long transaction",
         "DB_UNREACHABLE"               : "DB unreachable",
         "DB_NOT_ACTIVE"                : "DB not activated"
     }
