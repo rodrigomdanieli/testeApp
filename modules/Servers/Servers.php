@@ -174,6 +174,63 @@ class Servers extends ServerRequestControl
 
     /**
      *
+     * @Route("/server/session/rsa_keys")
+     * @Auth(true)
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     *  "hash",
+     *  "host",
+     *  "port"
+     * })
+     *
+     */
+    public function getRSAKeysServerSession(): Response\JSON
+    {
+        try {
+
+            $return = ExtensionServer::getServerSOConfigInSession($this->REQUEST['hash']);
+
+            if (is_array($return)) {
+                return new Response\JSON($return['status'], $return['msg']);
+            }
+            $rsa = $return->getRsa();
+            return new Response\JSON("ok", $rsa['privatekey']);
+        } catch (\Throwable $e) {
+            return new Response\JSON("error", $e->getMessage());
+        }
+    }
+
+    /**
+     *
+     * @Route("/server/session/db_pass")
+     * @Auth(true)
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     *  "hash",
+     *  "host",
+     *  "port"
+     * })
+     *
+     */
+    public function getDBPassServerSession(): Response\JSON
+    {
+        try {
+
+            $return = ExtensionServer::getServerDBConfigInSession($this->REQUEST['hash']);
+
+            if (is_array($return)) {
+                return new Response\JSON($return['status'], $return['msg']);
+            }
+            $pass = $return->getPassword();
+            return new Response\JSON("ok", $pass);
+        } catch (\Throwable $e) {
+            return new Response\JSON("error", $e->getMessage());
+        }
+    }
+    /**
+     *
      * @Route("/server/session/get_tutorial_so")
      * @Auth(false)
      * @Type("FILE")
