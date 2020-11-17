@@ -17,6 +17,12 @@
         }
     },
     "lbl": {
+        "total_servers" : "Total Server",
+        "total_alerts" : "Total Alert",
+        "total_criticals" : "Total Critics",
+        "total_warnings" : "Total de Alerts",
+        "ticket" : "Pending Tickets",
+
         "loading"   : "Loading",
         "servers": "Servers",
         "alerts": "Alerts",
