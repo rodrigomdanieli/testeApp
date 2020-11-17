@@ -20,9 +20,8 @@
         "total_servers" : "Total Server",
         "total_alerts" : "Total Alert",
         "total_criticals" : "Total Critics",
-        "total_warnings" : "Total de Alerts",
+        "total.warnings" : "Total de Alerts",
         "ticket" : "Pending Tickets",
-
         "loading"   : "Loading",
         "servers": "Servers",
         "alerts": "Alerts",
@@ -83,7 +82,10 @@
         "resend" : "Resend",
         "confirm_password" : "Confirm Password",
         "finish" : "Finish",
-        "in_maintenance" : "Under Maintenance"
+        "in_maintenance" : "Under Maintenance",
+        "customer" : "Customer",
+        "ticket_id" : "#Ticket",
+        "timestamp_opened" : "Aberto"
 
     },
     "tkt": {

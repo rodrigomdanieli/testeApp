@@ -21,9 +21,8 @@
         "total_servers" : "Servidor Total",
         "total_alerts" : "Alerta Total",
         "total_criticals" : "Críticas Totales",
-        "total_warnings" : "Alertas Totales",
+        "total.warnings" : "Alertas Totales",
         "ticket" : "Entradas Pendientes",
-
         "loading"   : "Cargando",
         "servers"   : "Servidores",
         "alerts"     : "Alertas",
@@ -84,7 +83,10 @@
         "resend" : "Reenviar",
         "confirm_password" : "Confirmar contraseña",
         "finish" : "Terminar",
-        "in_maintenance" : "En Mantenimiento"
+        "in_maintenance" : "En Mantenimiento",
+        "customer" : "Empresa",
+        "ticket_id" : "#Ticket",
+        "timestamp_opened" : "Aberto"
 
     },
     "tkt": {
