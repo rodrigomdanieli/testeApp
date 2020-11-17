@@ -125,10 +125,12 @@
             "new_comment": "New Comment",
             "automatic" : "Automatic",
             "users" : "User",
-            "Evidence" : "Evidence",
-            "Solution" : "Solution",
-            "Script" : "Script",
-            "Request" : "Request"
+            "type.Evidence" : "Evidence",
+            "type.Solution" : "Solution",
+            "type.Script" : "Script",
+            "type.Request" : "Request",
+            "type.Comment": "Comment",
+            "time_used" : "Hours Spent:"
         },
         "area" : "Area",
         "low" : "Low",

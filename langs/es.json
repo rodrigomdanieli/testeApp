@@ -124,10 +124,12 @@
             "new_comment": "Nuevo comentario",
             "automatic" : "Automático",
             "users" : "Usuario",
-            "Evidence" : "Evidencia",
-            "Solution" : "Solución",
-            "Script" : "Script",
-            "Request" : "Solicitud"
+            "type.Evidence" : "Evidencia",
+            "type.Solution" : "Solución",
+            "type.Script" : "Script",
+            "type.Request" : "Solicitud",
+            "type.Comment": "Comentario",
+            "time_used" : "Horas empleadas:"
         },
         "area" : "Area",
         "low" : "Bajo",
