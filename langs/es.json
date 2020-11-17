@@ -52,7 +52,7 @@
         "forapprove": "Para aprobar",
         "reason": "Razón",
         "by_user": "Por usuario",
-        "start": "comienzo",
+        "start": "Comienzo",
         "end": "Fin",
         "recurrent": "Recurrente",
         "user": "Usuario",
@@ -154,7 +154,17 @@
         "daily": "Diariamente",
         "weekly": "Semanal",
         "monthly": "Mensual",
-        "yearly": "Anual"
+        "yearly": "Anual",
+        "reason": "Razón",
+        "user_by": "Por usuario",
+        "start_timestamp" : "Aberto",
+        "maintenance_id" : "#Mantenimiento",
+        "start": "Comienzo",
+        "end": "Fin",
+        "recurrent": "Recurrente",
+        "user": "Usuario",
+        "approved": "Bueno",
+        "remove": "Para eliminar"
     },
     "err":{
         "invalid_username" : "Introduzca el nombre de usuario correcto",

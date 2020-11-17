@@ -155,7 +155,17 @@
         "daily": "Daily",
         "weekly": "Weekly",
         "monthly": "Monthly",
-        "yearly": "Yearly"
+        "yearly": "Yearly",
+        "reason": "Reason",
+        "user_by": "By User",
+        "start_timestamp" : "Opened",
+        "maintenance_id" : "#Maintenance",
+        "start": "Start",
+        "end": "End",
+        "recurrent": "Recurrent",
+        "user": "User",
+        "approved": "Approved",
+        "remove": "Remove"
     },
     "err":{
         "invalid_username" : "Please enter the correct username",

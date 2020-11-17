@@ -153,7 +153,17 @@
         "daily": "Diário",
         "weekly": "Semanal",
         "monthly": "Mensal",
-        "yearly": "Anual"
+        "yearly": "Anual",
+        "reason": "Razão",
+        "by_user": "Pelo usuário",
+        "start_timestamp" : "Aberto",
+        "maintenance_id" : "#Manutenção",
+        "start": "Inicio",
+        "end": "Fim",
+        "recurrent": "Recorrente",
+        "user": "Usuário",
+        "approved": "Aprovado",
+        "remove": "Remover"
     },
     "err":{
         "invalid_username" : "Por favor, digite o nome de usuário correto",
