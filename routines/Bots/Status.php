@@ -41,7 +41,7 @@ class Status
 
             $cache = new CacheRoutines;
 
-            $format_1 = new DateInterval('P1D');
+            $format_1 = new DateInterval('PT1M');
             $format_2 = new DateInterval('PT1M');
             $final_date = new \DateTime(date("Y-m-d H:i"));
             echo 'Start - ' . $final_date->format('Y-m-d H:i') . PHP_EOL;
@@ -64,10 +64,11 @@ class Status
                         $start_date->sub($format_1);
 
                         $cache2 = new CacheRoutines;
-
+                        echo 123;
                         $s = new \DBSnoop\Entity\Server($server['server_id']);
                         $ext_server = new \DBSnoop\Extension\Server($s);
                         
+                        echo $this->calcDiffMinutes($final_date, $start_date) . PHP_EOL;
                         while ($this->calcDiffMinutes($final_date, $start_date) > 0) {
                             echo $this->calcDiffMinutes($final_date, $start_date) . PHP_EOL;
                             $format_date = $start_date->format('Y-m-d H:i');
