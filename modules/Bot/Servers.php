@@ -94,7 +94,7 @@ class Servers extends ServerRequestControl
         while (calcDiffMinutes($final_date, $start_date) > 0) {
 
             $format_date = $start_date->format('Y-m-d H:i');
-            $key = "status_server-" . $server['server_id'] . "_" . $format_date;
+            $key = "status_server-" . $server->getId() . "_" . $format_date;
             $data = $cache->get($key);
             if ($data) {
                 array_push($servers_data[$server->getId()], $data);
