@@ -1,16 +1,17 @@
 {
     "project_dir": "/app/",
     "workers": {
-        "num": 20,
+        "num": 10,
         "file": "worker.php",
-        "restart" : 60.0,
-        "socket_dir": "/sockets/"
+        "restart" : 3600.0,
+        "socket_dir": "/sockets/",
+        "routines": true
     },
     "git": {
         "update": 60.0,
         "git_dir" : "rodrigomdanieli/testeApp",
         "user": "rodrigomdanieli",
-        "branch": "master",
+        "branch": "main",
         "token": "fed10ae3c4f4d555c52e19f86b9a2c1261eea984"
     },
     "nginx" : {

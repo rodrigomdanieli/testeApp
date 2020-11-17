@@ -12,6 +12,7 @@ $nginx = $config['nginx'];
 $git = $config['git'];
 
 $process_list = array();
+$routine_process = array();
 
 //Create new instance of Worker
 function createProcess(int $index)
@@ -38,6 +39,36 @@ function createProcess(int $index)
 
     $process = proc_open($command, $descriptorspec, $pipes, $cwd);
     exec("chown -R " . $nginx['user'] . ": " . $worker['socket_dir']);
+    return array(
+        "process" => $process,
+        "pipes" => $pipes,
+        "in_use" => false,
+    );
+}
+
+//Create new instance of Worker
+function createRoutineProcess()
+{
+
+    $config = json_decode(file_get_contents("/app/config.json"), true);
+
+
+    $worker = $config['workers'];
+    $nginx = $config['nginx'];
+
+    $descriptorspec = array(
+        0 => array("pipe", "r"),
+        1 => array("pipe", "w"),
+        2 => array("file", "/tmp/worker_error_routine.txt", "a"),
+    );
+
+    $cwd = '/tmp';
+
+    $command = "php " . $config['project_dir'] . $worker['file'] . " --env=prd --mode=routine";
+    echo $command . PHP_EOL;
+
+    $process = proc_open($command, $descriptorspec, $pipes, $cwd);
+    
     return array(
         "process" => $process,
         "pipes" => $pipes,
@@ -110,6 +141,10 @@ for ($i = 0; $i < $worker['num']; $i++) {
     $process_list[$i] = createProcess($i);
 }
 
+if($worker['routines']){
+    $routine_process = createRoutineProcess();
+}
+
 nginxConfig($process_list);
  
 $loop->addPeriodicTimer(1, function () use (&$process_list) {
@@ -124,6 +159,19 @@ $loop->addPeriodicTimer(1, function () use (&$process_list) {
                 $process_list[$key] = createProcess($key);
             }
             
+        }
+    }
+
+    if(!empty($routine_process)){
+        $process_info = proc_get_status($routine_process['process']);
+        if (!$process_info['running'] && !$routine_process['in_use']) {
+            exec('kill ' . $process_info['pid']);
+            $terminate = proc_terminate($routine_process['process'], 15);
+            if(!$terminate){
+                echo "Can't stop the process! " . $process_info['pid'];
+            }else{
+                $routine_process = createRoutineProcess();
+            }       
         }
     }
 });
@@ -142,6 +190,18 @@ $loop->addPeriodicTimer($worker['restart'], function () use (&$process_list) {
             $process_list[$key] = createProcess($key);
         }
         $process['in_use'] = false;
+    }
+    if(!empty($routine_process)){
+        $process_info = proc_get_status($routine_process['process']);
+        if (!$process_info['running'] && !$routine_process['in_use']) {
+            exec('kill ' . $process_info['pid']);
+            $terminate = proc_terminate($routine_process['process'], 15);
+            if(!$terminate){
+                echo "Can't stop the process! " . $process_info['pid'];
+            }else{
+                $routine_process = createRoutineProcess();
+            }       
+        }
     }
 });
 
