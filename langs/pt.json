@@ -21,14 +21,13 @@
         "total_alerts" : "Total Alerta",
         "total_criticals" : "Total de Críticos",
         "total_warnings" : "Total de Alertas",
-        "ticket" : "Tickets Pendentes",
+        "total_tickets" : "Tickets Pendentes",
+        "total_maintenances"   : "Total de Manutenções",
         "loading"   : "Carregando",
         "servers"   : "Servidores",
         "alerts"     : "Alertas",
         "criticals"  : "Críticos",
         "warnings"   : "Avisos",
-        "maintenances"   : "Manutenções",
-        "total_tickets" : "Total de Tickets",
         "connections": "Conexões",
         "cpu_use":"CPU",
         "io_wait":"Aguarde I/O",
@@ -82,7 +81,8 @@
         "resend" : "Reenviar",
         "confirm_password" : "Confirme a senha",
         "finish" : "Terminar",
-        "in_maintenance" : "Em Manutenção"
+        "in_maintenance" : "Em Manutenção",
+        "filter" : "Filtro"
     },
     "tkt": {
         "customer" : "Empresa",
@@ -198,11 +198,13 @@
         "disabled" : "Desabilitado",
         "filter" : "Filtro",
         "select" : "Selecione",
-        "status.N" : "Desabilitado",
-        "status.G" : "OK",
-        "status.B" : "Manutenção",
-        "status.Y" : "Atenção",
-        "status.R" : "Crítico"
+        "status":{
+            "N" : "Desabilitado",
+            "G" : "OK",
+            "B" : "Manutenção",
+            "Y" : "Atenção",
+            "R" : "Crítico"
+        }
     },
     "alert": {
 

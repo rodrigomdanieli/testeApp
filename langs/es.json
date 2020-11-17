@@ -22,14 +22,13 @@
         "total_alerts" : "Alerta Total",
         "total_criticals" : "Críticas Totales",
         "total_warnings" : "Alertas Totales",
-        "ticket" : "Entradas Pendientes",
+        "total_tickets" : "Entradas Pendientes",
+        "total_maintenances"   : "Manutención Totales",
         "loading"   : "Cargando",
         "servers"   : "Servidores",
         "alerts"     : "Alertas",
         "criticals"  : "Criticos",
         "warnings"   : "Avisos",
-        "maintenances"   : "Manutención",
-        "total_tickets" : "Total Tickets",
         "connections": "Conexiones",
         "cpu_use":"CPU",
         "io_wait":"Esperar I/O",
@@ -83,7 +82,8 @@
         "resend" : "Reenviar",
         "confirm_password" : "Confirmar contraseña",
         "finish" : "Terminar",
-        "in_maintenance" : "En Mantenimiento"
+        "in_maintenance" : "En Mantenimiento",
+        "filter" : "Filtro"
     },
     "tkt": {
         "customer" : "Empresa",
@@ -198,11 +198,13 @@
         "disabled" : "Disabled",
         "filter" : "Filtro",
         "select" : "Seleccionar",
-        "status.N" : "Disabled",
-        "status.G" : "OK",
-        "status.B" : "Mantenimiento",
-        "status.Y" : "Atención",
-        "status.R" : "Crítico"
+        "status":{
+            "N" : "Disabled",
+            "G" : "OK",
+            "B" : "Mantenimiento",
+            "Y" : "Atención",
+            "R" : "Crítico"
+        }
     },
     "alert":{
         "NO_MEMORY_USAGE_DATA"             : "No hay información de uso de memoria",
