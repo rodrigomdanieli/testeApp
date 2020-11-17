@@ -82,7 +82,13 @@
         "confirm_password" : "Confirm Password",
         "finish" : "Finish",
         "in_maintenance" : "Under Maintenance",
-        "filter" : "Filter"
+        "filter" : "Filter",
+        "status" : "Status",
+        "tickets" : "Tickets",
+        "details" : "Details",
+        "history" : "History",
+        "graph" : "Graph",
+        "overview" : "OverView"
     },
     "tkt": {
         "customer" : "Customer",
@@ -206,6 +212,18 @@
             "B" : "Maintenance",
             "Y" : "Warning",
             "R" : "Critical"
+        },
+        "graph":{
+            "connections" : "Connections",
+            "mysqld_watch" : "Use of MySQL",
+            "qps" : "QPS",
+            "memory" : "% Memory",
+            "kbytes_transfer" : "Connections",
+            "cpu_use" : "Use of CPU",
+            "io_wait" : "Wait de I/O",
+            "disk_space" : "% Use",
+            "swap" : "Use of SWAP",
+            "load" : "Load of CPU"
         }
     },
     "alert":{
