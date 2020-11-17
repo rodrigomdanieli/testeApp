@@ -186,13 +186,15 @@
             "postgresql" : "PostgreSql",
             "db2" : "DB2"
         },
-        "service.mssql" : "Mssql",
-        "alert.threads" : "Threads",
-        "alert.db_status" : "Status BD",
-        "alert.replication" : "Replicação",
-        "alert.availability" : "Disponibilidade",
-        "alert.disk" : "Disco",
-        "alert.cpu" : "CPU",
+        "alert":{
+            "threads" : "Threads",
+            "db_status" : "Status BD",
+            "replication" : "Replicação",
+            "availability" : "Disponibilidade",
+            "disk" : "Disco",
+            "cpu" : "CPU",
+            "memory" : "Memória"
+        },
         "disabled" : "Desabilitado",
         "filter" : "Filtro",
         "select" : "Selecione",
@@ -200,8 +202,7 @@
         "status.G" : "OK",
         "status.B" : "Manutenção",
         "status.Y" : "Atenção",
-        "status.R" : "Crítico",
-        "alert.memory" : "Memória"
+        "status.R" : "Crítico"
     },
     "alert": {
 

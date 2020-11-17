@@ -188,12 +188,15 @@
             "postgresql" : "PostgreSql",
             "db2" : "DB2"
         },
-        "alert.threads" : "Threads",
-        "alert.db_status" : "Status DB",
-        "alert.replication" : "Replication",
-        "alert.availability" : "Availability",
-        "alert.disk" : "Disk",
-        "alert.cpu" : "CPU",
+        "alert":{
+            "alert.threads" : "Threads",
+            "alert.db_status" : "Status DB",
+            "alert.replication" : "Replication",
+            "alert.availability" : "Availability",
+            "alert.disk" : "Disk",
+            "alert.cpu" : "CPU",
+            "alert.memory" : "Memory"
+        },
         "disabled" : "Disabled",
         "filter" : "Filter",
         "select" : "Select",
@@ -201,8 +204,7 @@
         "status.G" : "OK",
         "status.B" : "Maintenance",
         "status.Y" : "Warning",
-        "status.R" : "Critical",
-        "alert.memory" : "Memory"
+        "status.R" : "Critical"
     },
     "alert":{
         "NO_MEMORY_USAGE_DATA": "No memory usage information",
