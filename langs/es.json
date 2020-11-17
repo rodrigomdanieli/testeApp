@@ -86,7 +86,8 @@
         "in_maintenance" : "En Mantenimiento",
         "customer" : "Empresa",
         "ticket_id" : "#Ticket",
-        "timestamp_opened" : "Aberto"
+        "timestamp_opened" : "Aberto",
+        "confirm" : "Confirmar"
 
     },
     "tkt": {
@@ -119,8 +120,20 @@
         "hours": "Horas",
         "assigned": "Asignado",
         "solicited": "Solicitado",
-        "comment": "Comentario",
-        "new_comment": "Nuevo comentario"
+        "comment.Comment": "Comentario",
+        "comment.new_comment": "Nuevo comentario",
+        "area" : "Area",
+        "low" : "Bajo",
+        "medium" : "Medio",
+        "high" : "Alto",
+        "critical" : "Crítico",
+        "comments.automatic" : "Automático",
+        "comments.users" : "Usuario",
+        "comments.Comment" : "Comentario",
+        "comments.Evidence" : "Evidencia",
+        "comments.Solution" : "Solución",
+        "comments.Script" : "Script",
+        "comments.Request" : "Solicitud"
     },
     "mnt": {
         "create_new_maintenance": "Crear Nuevo Mantenimiento",

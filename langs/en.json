@@ -85,7 +85,8 @@
         "in_maintenance" : "Under Maintenance",
         "customer" : "Customer",
         "ticket_id" : "#Ticket",
-        "timestamp_opened" : "Aberto"
+        "timestamp_opened" : "Opened",
+        "confirm" : "Confirm"
 
     },
     "tkt": {
@@ -120,8 +121,20 @@
         "hours": "Hours",
         "assigned": "Assigned",
         "solicited": "Solicited",
-        "comment": "Comment",
-        "new_comment": "New Comment"
+        "comment.Comment": "Comment",
+        "comment.new_comment": "New Comment",
+        "area" : "Area",
+        "low" : "Low",
+        "medium" : "Medium",
+        "high" : "High",
+        "critical" : "Critical",
+        "comments.automatic" : "Automatic",
+        "comments.users" : "User",
+        "comments.Comment" : "Comment",
+        "comments.Evidence" : "Evidence",
+        "comments.Solution" : "Solution",
+        "comments.Script" : "Script",
+        "comments.Request" : "Request"
     },
     "mnt": {
         "create_new_maintenance": "Create New Maintenance",
