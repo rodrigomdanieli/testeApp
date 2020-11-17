@@ -69,6 +69,7 @@ class Status
                         $ext_server = new \DBSnoop\Extension\Server($s);
                         
                         while ($this->calcDiffMinutes($final_date, $start_date) > 0) {
+                            echo $this->calcDiffMinutes($final_date, $start_date) . PHP_EOL;
                             $format_date = $start_date->format('Y-m-d H:i');
                             $key = "status_server-" . $server['server_id'] . "_" . $format_date;
                             if (!$cache2->exists($key)) {
