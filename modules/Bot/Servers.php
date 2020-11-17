@@ -99,6 +99,7 @@ class Servers extends ServerRequestControl
                 if ($data) {
                     array_push($servers_data[$server['server_id']], $data);
                 }
+                $start_date->add($format_2);
             }
         }
 
