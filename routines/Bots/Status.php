@@ -9,7 +9,7 @@ use DBSnoop\Annotations\StartRunning;
 use DBSnoop\Extension\Server as ExtensionServer;
 use DBSnoop\System\CacheRoutines;
 
-class ServeStatus
+class Status
 {
 
     /**
