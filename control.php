@@ -141,7 +141,7 @@ for ($i = 0; $i < $worker['num']; $i++) {
     $process_list[$i] = createProcess($i);
 }
 
-if($worker['routine']){
+if($worker['routines']){
     $routine_process = createRoutineProcess();
 }
 
