@@ -6,6 +6,7 @@ use DBSnoop\Annotations\Auth;
 use DBSnoop\Annotations\Request;
 use DBSnoop\Annotations\Route;
 use DBSnoop\Annotations\Type;
+use DBSnoop\Annotations\Needed;
 use DBSnoop\Entity\Server as EntityServer;
 use DBSnoop\Entity\User;
 use DBSnoop\Lists\Server;
