@@ -20,7 +20,7 @@
         "total_servers" : "Total Server",
         "total_alerts" : "Total Alert",
         "total_criticals" : "Total Critics",
-        "total.warnings" : "Total de Alerts",
+        "total_warnings" : "Total de Alerts",
         "ticket" : "Pending Tickets",
         "loading"   : "Loading",
         "servers": "Servers",
@@ -82,14 +82,13 @@
         "resend" : "Resend",
         "confirm_password" : "Confirm Password",
         "finish" : "Finish",
-        "in_maintenance" : "Under Maintenance",
-        "customer" : "Customer",
-        "ticket_id" : "#Ticket",
-        "timestamp_opened" : "Opened",
-        "confirm" : "Confirm"
-
+        "in_maintenance" : "Under Maintenance"
     },
     "tkt": {
+        "customer" : "Customer",
+        "confirm" : "Confirm",
+        "ticket_id" : "#Ticket",
+        "timestamp_opened" : "Opened",
         "create_new_ticket": "Create New Ticket",
         "team_level": "Team Level",
         "all": "All",
@@ -101,8 +100,8 @@
         "backlog": "BackLog",
         "open_today": "Open Today",
         "sla": "SLA",
-        "%_complied": "% Complied",
-        "%_closed": "% Closed",
+        "perc_completed": "% Complied",
+        "perc_closed": "% Closed",
         "scheduled": "Scheduled",
         "in_progress": "In Progress",
         "opened": "Opened",
@@ -121,20 +120,22 @@
         "hours": "Hours",
         "assigned": "Assigned",
         "solicited": "Solicited",
-        "comment.Comment": "Comment",
-        "comment.new_comment": "New Comment",
+        "comments":{
+            "Comment": "Comment",
+            "new_comment": "New Comment",
+            "automatic" : "Automatic",
+            "users" : "User",
+            "Evidence" : "Evidence",
+            "Solution" : "Solution",
+            "Script" : "Script",
+            "Request" : "Request"
+        },
         "area" : "Area",
         "low" : "Low",
         "medium" : "Medium",
         "high" : "High",
-        "critical" : "Critical",
-        "comments.automatic" : "Automatic",
-        "comments.users" : "User",
-        "comments.Comment" : "Comment",
-        "comments.Evidence" : "Evidence",
-        "comments.Solution" : "Solution",
-        "comments.Script" : "Script",
-        "comments.Request" : "Request"
+        "critical" : "Critical"
+        
     },
     "mnt": {
         "create_new_maintenance": "Create New Maintenance",
@@ -172,8 +173,15 @@
     },
     "srv": {
         "server_ok" : "Server OK!",
-        "service.mysql" : "Mysql",
-        "service.linux" : "Linux",
+        "service":{
+            "mysql" : "Mysql",
+            "linux" : "Linux",
+            "mssql" : "Mssql",
+            "oracle" : "Oracle",
+            "windows" : "Windows",
+            "postgresql" : "PostgreSql",
+            "db2" : "DB2"
+        },
         "alert.threads" : "Threads",
         "alert.db_status" : "Status DB",
         "alert.replication" : "Replication",

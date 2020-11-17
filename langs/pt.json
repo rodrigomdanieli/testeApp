@@ -20,7 +20,7 @@
         "total_servers" : "Total Servidor",
         "total_alerts" : "Total Alerta",
         "total_criticals" : "Total de Críticos",
-        "total.warnings" : "Total de Alertas",
+        "total_warnings" : "Total de Alertas",
         "ticket" : "Tickets Pendentes",
         "loading"   : "Carregando",
         "servers"   : "Servidores",
@@ -82,15 +82,13 @@
         "resend" : "Reenviar",
         "confirm_password" : "Confirme a senha",
         "finish" : "Terminar",
-        "in_maintenance" : "Em Manutenção",
-
-        "customer" : "Empresa",
-        "ticket_id" : "#Ticket",
-        "timestamp_opened" : "Aberto",
-        "confirm" : "Confirmar"
-
+        "in_maintenance" : "Em Manutenção"
     },
     "tkt": {
+        "customer" : "Empresa",
+        "confirm" : "Confirmar",
+        "ticket_id" : "#Ticket",
+        "timestamp_opened" : "Aberto",
         "all": "Todos",
         "incident": "Incidente",
         "maintenance": "Manutenção",
@@ -100,8 +98,8 @@
         "backlog": "BackLog",
         "open_today": "Aberto hoje",
         "sla": "SLA",
-        "%_complied": "% Cumprido",
-        "%_closed": "% Fechado",
+        "perc_completed": "% Cumprido",
+        "perc_closed": "% Fechado",
         "scheduled": "Programado",
         "in_progress": "Em andamento",
         "opened": "Aberto",
@@ -120,21 +118,21 @@
         "hours": "Horas",
         "assigned": "Atribuído",
         "solicited": "Solicitado",
-        "comment.Comment": "Comentário",
-        "comment.new_comment": "Novo Comentário",
-
+        "comments":{
+            "Comment": "Comentário",
+            "new_comment": "Novo Comentário",
+            "automatic" : "Comentário Automático",
+            "users" : "Usuário",
+            "Evidence" : "Evidência",
+            "Solution" : "Solução",
+            "Script" : "Script",
+            "Request" : "Solicitação"
+        },
         "area" : "Área",
         "low" : "Baixo",
         "medium" : "Médio",
         "high" : "Alto",
-        "critical" : "Crítico",
-        "comments.automatic" : "Comentário Automático",
-        "comments.users" : "Usuário",
-        "comments.Comment" : "Comentário",
-        "comments.Evidence" : "Evidência",
-        "comments.Solution" : "Solução",
-        "comments.Script" : "Script",
-        "comments.Request" : "Solicitação"
+        "critical" : "Crítico"
     },
     "mnt": {
         "create_new_maintenance": "Criar Nova Manutenção",
@@ -172,8 +170,15 @@
     },
     "srv": {
         "server_ok" : "Servidor OK!",
-        "service.mysql" : "Mysql",
-        "service.linux" : "Linux",
+        "service":{
+            "mysql" : "Mysql",
+            "linux" : "Linux",
+            "mssql" : "Mssql",
+            "oracle" : "Oracle",
+            "windows" : "Windows",
+            "postgresql" : "PostgreSql",
+            "db2" : "DB2"
+        },
         "service.mssql" : "Mssql",
         "alert.threads" : "Threads",
         "alert.db_status" : "Status BD",
