@@ -90,7 +90,8 @@
         "history" : "Histórico",
         "graph" : "Grafico",
         "overview" : "Visión de Conjunto",
-        "select" : "Seleccionar"
+        "select" : "Seleccionar",
+        "confirm" : "Confirmar"
 
     },
     "tkt": {
@@ -127,11 +128,13 @@
         "hours": "Horas",
         "assigned": "Asignado",
         "solicited": "Solicitado",
-        "type.Evidence" : "Evidencia",
-        "type.Solution" : "Solución",
-        "type.Script" : "Script",
-        "type.Request" : "Solicitud",
-        "type.Comment": "Comentario",
+        "type":{
+            "Evidence" : "Evidencia",
+            "Solution" : "Solución",
+            "Script" : "Script",
+            "Request" : "Solicitud",
+            "Comment": "Comentario"
+        },
         "comments": {
             "Comment": "Comentario",
             "new_comment": "Nuevo comentario",
@@ -157,7 +160,8 @@
         "governance" : "Gobernanza",
         "emergency" : "Emergencia",
         "email" : "Correo electrónico",
-        "coordenation" : "Coordinación"
+        "coordenation" : "Coordinación",
+        "handshake" : "Handshake"
     },
     "mnt": {
         "create_new_maintenance": "Crear Nuevo Mantenimiento",
