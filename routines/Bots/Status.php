@@ -64,17 +64,18 @@ class Status
                         $ext_server = new \DBSnoop\Extension\Server($s);
 
                         $key_cache = sha1("status_history_server-" . $server['server_id'] . "-" . $format_date);
-                        
+
                         $result = $ext_server->getHistory($final_date);
 
-                        $result_to_cache = array(
-                            "status" => 'G',
-                            "alerts" => array(),
-                        );
                         if ($result['status'] == 'ok') {
                             $result = $result['data'];
 
                             if (!empty($result)) {
+
+                                $result_to_cache = array(
+                                    "status" => 'G',
+                                    "alerts" => array(),
+                                );
                                 foreach ($result as $key => $val) {
                                     if ($val['status'] == 'R') {
                                         $result_to_cache['status'] = 'R';
@@ -93,37 +94,35 @@ class Status
                                         array_push($result_to_cache['alerts'][$val['service']][$val['type']], $val['alerts']);
                                     }
                                 }
+                                $cache2->set($key_cache, $result_to_cache, 24 * 60 * 60);
                             }
                         }
-
-                        $cache2->set($key_cache, $result_to_cache, 24 * 60 * 60 * 1000);
 
                         $start_date = clone $final_date;
 
                         $start_date->sub($format_1);
                         $temp_data = array();
-        
+
                         while ($this->calcDiffMinutes($final_date, $start_date) >= 0) {
                             $format_date2 = $start_date->format('Y-m-d H:i');
                             $key_cache2 = sha1("status_history_server-" . $server['server_id'] . "-" . $format_date2);
                             $in_cache = $cache2->get($key_cache2);
-                            if(!empty($in_cache)){
+                            if (!empty($in_cache)) {
                                 $temp_data[$format_date2] = $in_cache;
                             }
-                            if($this->calcDiffMinutes($final_date, $start_date) == 0){
+                            if ($this->calcDiffMinutes($final_date, $start_date) == 0) {
                                 break;
-                            }else{
+                            } else {
                                 $start_date->add($format_2);
                             }
-                            
+
                         }
                         unset($start_date);
-        
+
                         if (!empty($temp_data)) {
                             $cache2->set("last_day_status" . $server['server_id'], $temp_data, 1800);
                         }
-                        
-                        
+
                         unset($cache2);
                         unset($ext_server);
                         unset($s);
@@ -148,7 +147,6 @@ class Status
 
             // foreach ($for2 as $server) {
 
-
             //     $start_date = clone $final_date;
 
             //     $start_date->sub($format_1);
@@ -167,7 +165,7 @@ class Status
             //         }else{
             //             $start_date->add($format_2);
             //         }
-                    
+
             //     }
             //     unset($start_date);
 

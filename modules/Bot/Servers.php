@@ -64,22 +64,26 @@ class Servers extends ServerRequestControl
      * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
-     * @Needed({
-     *  "id"
-     * })
      */
     public function listHistoric(): Response\JSON
     {
+        $filter = array(
+            'user' => $this->SESSION['user_id'],
+            'removed' => false,
+        );
 
-        $server = new EntityServer($this->REQUEST['id'], new User($this->SESSION['user_id']));
+        $servers = new Server($filter);
+
         $cache = new Cache;
 
         $servers_data = array();
+        foreach($servers->toArray() as $server){
+            $servers_data[$server->getId()] = $cache->get('last_day_status'.$server->getId());
+        }
+        
 
-        $servers_data[$server->getId()] = array();
 
-
-        return new Response\JSON("ok", $cache->get('last_day_status'.$server->getId()));
+        return new Response\JSON("ok", $servers_data);
 
     }
 
