@@ -114,7 +114,7 @@
         "in_progress": "En curso",
         "opened": "Abierto",
         "history": "Historia",
-        "type": "Tipo",
+        "types": "Tipo",
         "assign": "Asignar",
         "open": "abierto",
         "closed": "Cerrado",
@@ -133,7 +133,8 @@
             "Solution" : "Solución",
             "Script" : "Script",
             "Request" : "Solicitud",
-            "Comment": "Comentario"
+            "Comment": "Comentario",
+            "Incident" : "Incidente"
         },
         "comments": {
             "Comment": "Comentario",
