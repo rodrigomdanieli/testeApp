@@ -159,7 +159,8 @@
         "emergency" : "Emergência",
         "email" : "E-mail",
         "coordenation" : "Coordenação",
-        "handshake" : "Handshake"
+        "handshake" : "Handshake",
+        "description" : "Descrição"
     },
     "mnt": {
         "create_new_maintenance": "Criar Nova Manutenção",

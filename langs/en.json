@@ -161,7 +161,8 @@
         "emergency" : "Emergency",
         "email" : "E-mail",
         "coordenation" : "Coordenation",
-        "handshake" : "Handshake"
+        "handshake" : "Handshake",
+        "description" : "Description"
         
     },
     "mnt": {

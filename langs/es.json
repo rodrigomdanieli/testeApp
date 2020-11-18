@@ -161,7 +161,8 @@
         "emergency" : "Emergencia",
         "email" : "Correo electrónico",
         "coordenation" : "Coordinación",
-        "handshake" : "Handshake"
+        "handshake" : "Handshake",
+        "description" : "Descripción"
     },
     "mnt": {
         "create_new_maintenance": "Crear Nuevo Mantenimiento",
