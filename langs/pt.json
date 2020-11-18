@@ -89,7 +89,8 @@
         "history" : "Histórico",
         "graph" : "Gráficos",
         "overview" : "Visão Geral",
-        "select" : "Selecione"
+        "select" : "Selecione",
+        "confirm" : "Confirmar"
     },
     "tkt": {
         "customer" : "Empresa",
@@ -125,12 +126,13 @@
         "hours": "Horas",
         "assigned": "Atribuído",
         "solicited": "Solicitado",
-        "type.Evidence" : "Evidência",
-        "type.Solution" : "Solução",
-        "type.Script" : "Script",
-        "type.Request" : "Solicitação",
-        "type.Comment": "Comentário",
-        
+        "type":{
+            "Evidence" : "Evidência",
+            "Solution" : "Solução",
+            "Script" : "Script",
+            "Request" : "Solicitação",
+            "Comment": "Comentário"
+        },
         "comments":{
             "Comment": "Comentário",
             "new_comment": "Novo Comentário",
@@ -156,7 +158,9 @@
         "governance" : "Governança",
         "emergency" : "Emergência",
         "email" : "E-mail",
-        "coordenation" : "Coordenação"
+        "coordenation" : "Coordenação",
+        "handshake" : "Handshake",
+        "description" : "Descrição"
     },
     "mnt": {
         "create_new_maintenance": "Criar Nova Manutenção",

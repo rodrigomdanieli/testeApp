@@ -89,7 +89,8 @@
         "history" : "History",
         "graph" : "Graph",
         "overview" : "OverView",
-        "select" : "Select"
+        "select" : "Select",
+        "confirm" : "Confirm"
     },
     "tkt": {
         "customer" : "Customer",
@@ -127,11 +128,13 @@
         "hours": "Hours",
         "assigned": "Assigned",
         "solicited": "Solicited",
-        "type.Evidence" : "Evidence",
-        "type.Solution" : "Solution",
-        "type.Script" : "Script",
-        "type.Request" : "Request",
-        "type.Comment": "Comment",
+        "type":{
+            "Evidence" : "Evidence",
+            "Solution" : "Solution",
+            "Script" : "Script",
+            "Request" : "Request",
+            "Comment": "Comment"
+        },
         "comments":{
             "Comment": "Comment",
             "new_comment": "New Comment",
@@ -149,7 +152,6 @@
         "high" : "High",
         "critical" : "Critical",
         "err": "Error",
-
         "operation" : "Operation",
         "security" : "Security",
         "infrestructure" : "Infrastructure",
@@ -158,7 +160,9 @@
         "governance" : "Governance",
         "emergency" : "Emergency",
         "email" : "E-mail",
-        "coordenation" : "Coordenation"
+        "coordenation" : "Coordenation",
+        "handshake" : "Handshake",
+        "description" : "Description"
         
     },
     "mnt": {
