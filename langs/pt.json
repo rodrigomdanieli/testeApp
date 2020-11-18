@@ -131,7 +131,8 @@
             "Solution" : "Solução",
             "Script" : "Script",
             "Request" : "Solicitação",
-            "Comment": "Comentário"
+            "Comment": "Comentário",
+            "Incident" : "Incidente"
         },
         "comments":{
             "Comment": "Comentário",

@@ -133,7 +133,8 @@
             "Solution" : "Solution",
             "Script" : "Script",
             "Request" : "Request",
-            "Comment": "Comment"
+            "Comment": "Comment",
+            "Incident" : "Incident"
         },
         "comments":{
             "Comment": "Comment",
