@@ -88,7 +88,8 @@
         "details" : "Detalhes",
         "history" : "Histórico",
         "graph" : "Gráficos",
-        "overview" : "Visão Geral"
+        "overview" : "Visão Geral",
+        "select" : "Selecione"
     },
     "tkt": {
         "customer" : "Empresa",
@@ -145,7 +146,17 @@
         "low" : "Baixo",
         "medium" : "Médio",
         "high" : "Alto",
-        "critical" : "Crítico"
+        "critical" : "Crítico",
+        "err": "Erro",
+        "operation" : "Operação",
+        "security" : "Segurança",
+        "infrestructure" : "Infra-Estrutura",
+        "sql" : "SQL",
+        "architecture" : "Arquitetura",
+        "governance" : "Governança",
+        "emergency" : "Emergência",
+        "email" : "E-mail",
+        "coordenation" : "Coordenação"
     },
     "mnt": {
         "create_new_maintenance": "Criar Nova Manutenção",
