@@ -78,11 +78,9 @@ class Servers extends ServerRequestControl
 
         $servers_data = array();
         foreach($servers->toArray() as $server){
-            $servers_data[$server->getId()] = $cache->get('last_day_status'.$server->getId());
+            $servers_data[$server['server_id']] = $cache->get('last_day_status'.$server['server_id']);
         }
         
-
-
         return new Response\JSON("ok", $servers_data);
 
     }
