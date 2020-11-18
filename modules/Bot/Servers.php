@@ -12,6 +12,7 @@ use DBSnoop\Entity\User;
 use DBSnoop\Lists\Server;
 use DBSnoop\Lists\ServersStatus;
 use DBSnoop\System\Cache;
+use DBSnoop\System\CacheRoutines;
 use DBSnoop\System\Response;
 use DBSnoop\System\ServerRequestControl;
 
@@ -56,6 +57,7 @@ class Servers extends ServerRequestControl
         return new Response\JSON("ok", $servers->toArray());
 
     }
+    
     /**
      *
      * @Route("/bot/list_history")
@@ -72,38 +74,12 @@ class Servers extends ServerRequestControl
         $server = new EntityServer($this->REQUEST['id'], new User($this->SESSION['user_id']));
         $cache = new Cache;
 
-        $format_1 = new \DateInterval('P1D');
-        $format_2 = new \DateInterval('PT1M');
-        $final_date = new \DateTime(date("Y-m-d H:i"));
         $servers_data = array();
-        function calcDiffMinutes(\DateTime $date1, \DateTime $date2): int
-        {
-            $diff = $date1->diff($date2);
-            $minutes = $diff->days * 24 * 60;
-            $minutes += $diff->h * 60;
-            $minutes += $diff->i;
-            return $minutes;
-
-        }
-
-        $start_date = clone $final_date;
-
-        $start_date->sub($format_1);
 
         $servers_data[$server->getId()] = array();
 
-        while (calcDiffMinutes($final_date, $start_date) > 0) {
 
-            $format_date = $start_date->format('Y-m-d H:i');
-            $key = "status_history_server-" . $server->getId() . "-" . $format_date;
-            $data = $cache->get($key);
-            if ($data) {
-                array_push($servers_data[$server->getId()], $data);
-            }
-            $start_date->add($format_2);
-        }
-
-        return new Response\JSON("ok", $servers_data);
+        return new Response\JSON("ok", $cache->get('last_day_status'.$server->getId()));
 
     }
 

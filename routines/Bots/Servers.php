@@ -15,7 +15,7 @@ class Servers
 {
 
     /**
-     *
+     * @Active
      * @Interval(60)
      * @StartRunning
      */
@@ -26,6 +26,7 @@ class Servers
     }
 
     /**
+     * @Active
      * @Interval(60)
      * @StartRunning
      */
@@ -36,6 +37,7 @@ class Servers
     }
 
     /**
+     * @Active
      * @Interval(60)
      * @StartRunning
      */
@@ -46,6 +48,7 @@ class Servers
     }
 
     /**
+     * @Active
      * @Interval(60)
      * @StartRunning
      */
@@ -56,6 +59,7 @@ class Servers
     }
 
     /**
+     * @Active
      * @Interval(60)
      * @StartRunning
      */
