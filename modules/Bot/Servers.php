@@ -58,9 +58,37 @@ class Servers extends ServerRequestControl
 
     }
     
+    
     /**
      *
      * @Route("/bot/list_history")
+     * @Auth(true)
+     * @Type("JSON")
+     * @Request("POST")
+     */
+    public function listHistoric(): Response\JSON
+    {
+        $filter = array(
+            'user' => $this->SESSION['user_id'],
+            'removed' => false,
+        );
+
+        $servers = new Server($filter);
+
+        $cache = new Cache;
+
+        $servers_data = array();
+        foreach($servers->toArray() as $server){
+            $servers_data[$server['server_id']] = $cache->get('last_day_status'.$server['server_id']);
+        }
+        
+        return new Response\JSON("ok", $servers_data);
+
+    }
+
+    /**
+     *
+     * @Route("/bot/list_history_by_server")
      * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
@@ -68,7 +96,7 @@ class Servers extends ServerRequestControl
      *  "id"
      * })
      */
-    public function listHistoric(): Response\JSON
+    public function listHistoricByServer(): Response\JSON
     {
 
         $server = new EntityServer($this->REQUEST['id'], new User($this->SESSION['user_id']));
