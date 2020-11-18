@@ -89,7 +89,8 @@
         "details" : "Detalles",
         "history" : "Histórico",
         "graph" : "Grafico",
-        "overview" : "Visión de Conjunto"
+        "overview" : "Visión de Conjunto",
+        "select" : "Seleccionar"
 
     },
     "tkt": {
@@ -146,7 +147,17 @@
         "low" : "Bajo",
         "medium" : "Medio",
         "high" : "Alto",
-        "critical" : "Crítico"
+        "critical" : "Crítico",
+        "err": "Error",
+        "operation" : "Operación",
+        "security" : "Seguridad",
+        "infrestructure" : "Infraestructura",
+        "sql" : "SQL",
+        "architecture" : "Arquitectura",
+        "governance" : "Gobernanza",
+        "emergency" : "Emergencia",
+        "email" : "Correo electrónico",
+        "coordenation" : "Coordinación"
     },
     "mnt": {
         "create_new_maintenance": "Crear Nuevo Mantenimiento",
