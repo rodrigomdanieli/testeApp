@@ -85,6 +85,7 @@ class Servers extends ServerRequestControl
             return $minutes;
 
         }
+        
         $start_date = clone $final_date;
 
         $start_date->sub($format_1);
