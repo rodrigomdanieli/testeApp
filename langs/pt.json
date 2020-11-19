@@ -182,7 +182,8 @@
         "approved": "Aprovado",
         "remove": "Remover",
         "schema" : "Esquema",
-        "alert" : "Alerta"
+        "alert" : "Alerta",
+        "server" :  "Servidor"
     },
     "err":{
         "invalid_username" : "Por favor, digite o nome de usuário correto",

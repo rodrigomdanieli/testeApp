@@ -184,7 +184,8 @@
         "approved": "Bueno",
         "remove": "Para eliminar",
         "schema" : "Esquema",
-        "alert" : "Alerta"
+        "alert" : "Alerta",
+        "server" :  "Servidor"
     },
     "err":{
         "invalid_username" : "Introduzca el nombre de usuario correcto",

@@ -185,7 +185,8 @@
         "approved": "Approved",
         "remove": "Remove",
         "schema" : "Schema",
-        "alert" : "Alert"
+        "alert" : "Alert",
+        "server" :  "Server"
     },
     "err":{
         "invalid_username" : "Please enter the correct username",
