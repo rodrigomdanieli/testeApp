@@ -59,7 +59,7 @@ class Graphics extends ServerRequestControl
 
     /**
      *
-     * @Route("/bot/last_hour_server_graph")
+     * @Route("/bot/last_hour_by_server")
      * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
