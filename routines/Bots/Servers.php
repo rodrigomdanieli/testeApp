@@ -268,7 +268,7 @@ class Servers
                 $start_date->sub($format_1);
                 $temp_data = array();
 
-                while (Utils::calcDiffMinutes($start_date, $final_date) >= 0) {
+                while (Utils::calcDiffMinutes($start_date, $final_date) <= 0) {
                     $format_date2 = $final_date->format('Y-m-d H:i');
                     $key_cache2 = sha1($type . "_graph_" . $server['server_id'] . "_" . $format_date2);
                     $c = $cache->get($key_cache2);
