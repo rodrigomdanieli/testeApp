@@ -220,13 +220,6 @@ class Servers
 
         echo 'Start - ' . $type . ' - ' . $end . PHP_EOL;
         $for2 = $servers->getAllActiveServers();
-        $for2 = array(
-            array(
-                'server_id' => 55,
-                'db_type' => 'mysql',
-                'so_type' => 'linux'
-            )
-            );
         $chunks = array_chunk($for2, 150);
 
 
