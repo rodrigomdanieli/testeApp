@@ -569,16 +569,16 @@
         },
         {
             "name": "hti-tecnologia/dbsnoop-library",
-            "version": "0.1.52",
+            "version": "0.1.56",
             "source": {
                 "type": "git",
                 "url": "git@github.com:hti-tecnologia/dbsnoop-library.git",
-                "reference": "aeca3db285a1819a75ebc6e5d9f5bbfcc012cafa"
+                "reference": "fd36a25debc09657a5a9c0d4c7c3cbbe2ded0713"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hti-tecnologia/dbsnoop-library/zipball/aeca3db285a1819a75ebc6e5d9f5bbfcc012cafa",
-                "reference": "aeca3db285a1819a75ebc6e5d9f5bbfcc012cafa",
+                "url": "https://api.github.com/repos/hti-tecnologia/dbsnoop-library/zipball/fd36a25debc09657a5a9c0d4c7c3cbbe2ded0713",
+                "reference": "fd36a25debc09657a5a9c0d4c7c3cbbe2ded0713",
                 "shasum": ""
             },
             "require": {
@@ -631,10 +631,10 @@
                 }
             ],
             "support": {
-                "source": "https://github.com/hti-tecnologia/dbsnoop-library/tree/v0.1.52",
+                "source": "https://github.com/hti-tecnologia/dbsnoop-library/tree/v0.1.56",
                 "issues": "https://github.com/hti-tecnologia/dbsnoop-library/issues"
             },
-            "time": "2020-11-11T12:35:00+00:00"
+            "time": "2020-11-16T20:42:55+00:00"
         },
         {
             "name": "neomerx/cors-psr7",
