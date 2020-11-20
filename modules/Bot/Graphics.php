@@ -5,7 +5,10 @@ namespace DBModules\Bot;
 use DBSnoop\Annotations\Auth;
 use DBSnoop\Annotations\Request;
 use DBSnoop\Annotations\Route;
+use DBSnoop\Annotations\Needed;
 use DBSnoop\Annotations\Type;
+use DBSnoop\Entity\Server as EntityServer;
+use DBSnoop\Entity\User;
 use DBSnoop\Extension\Graphic;
 use DBSnoop\Lists\Server;
 use DBSnoop\System\Cache;
@@ -53,6 +56,35 @@ class Graphics extends ServerRequestControl
 
         return new Response\JSON("ok", $graphs_data);
 
+    }
+
+    /**
+     *
+     * @Route("/bot/last_hour_by_server")
+     * @Auth(true)
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     *  "id"
+     * })
+     */
+
+    public function getLastHourServer(): Response\JSON
+    {
+
+
+        $cache = new Cache;
+        $server = new EntityServer($this->REQUEST['id'] , new User($this->SESSION['user_id']));
+
+        if($server->checkAuth()){
+            $graphs_data = array(
+                "so" => $cache->get("last_hour_" . $server->getSo_type() . "_graph_" . $server->getId()),
+                "db" => $cache->get("last_hour_" . $server->getDb_type() . "_graph_" . $server->getId()),
+            );
+            return new Response\JSON("ok", $graphs_data);
+        }else{
+            return new Response\JSON("error", "INVALID_SERVER");
+        }
     }
 
     /**
