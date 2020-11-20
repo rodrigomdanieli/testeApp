@@ -3,12 +3,13 @@
 namespace DBRoutines\Bots;
 
 use DBSnoop\Annotations\Active;
+use DBSnoop\Annotations\Cron;
 use DBSnoop\Annotations\Interval;
 use DBSnoop\Annotations\StartRunning;
-use DBSnoop\Annotations\Cron;
 use DBSnoop\Entity\Server as EntityServer;
 use DBSnoop\Extension\Graphic as ExtensionGraphic;
 use DBSnoop\Extension\Server as ExtensionServer;
+use DBSnoop\System\Cache;
 use DBSnoop\System\CacheRoutines;
 use DBSnoop\System\Utils;
 
@@ -75,7 +76,6 @@ class Servers
         return ((float) $usec + (float) $sec);
     }
 
-    
     /**
      * @Active
      * @Cron("@daily")
@@ -210,18 +210,17 @@ class Servers
         $start_timer = $this->microtime_float();
 
         $servers = new ExtensionServer();
-
+        $cache = new Cache;
         $format_1 = new \DateInterval('P1D');
         $format_2 = new \DateInterval('PT1M');
         $final_date = new \DateTime(date("Y-m-d H:i"));
-        $start_date =  clone $final_date;
+        $start_date = clone $final_date;
         $start = $start_date->sub($format_2)->format("Y-m-d H:i");
         $end = $final_date->format('Y-m-d H:i');
 
         echo 'Start - ' . $type . ' - ' . $end . PHP_EOL;
         $for2 = $servers->getAllActiveServers();
         $chunks = array_chunk($for2, 150);
-
 
         foreach ($chunks as $chunk) {
             foreach ($chunk as $server) {
@@ -242,38 +241,6 @@ class Servers
 
                         $cache2->set($hash, $s, 3 * 24 * 60 * 60);
 
-                        $start_date = clone $final_date;
-
-                        $start_date->sub($format_1);
-                        $temp_data = array();
-
-                        while (Utils::calcDiffMinutes($final_date, $start_date) >= 0) {
-                            $format_date2 = $start_date->format('Y-m-d H:i');
-                            $key_cache2 = sha1($type . "_graph_" . $server['server_id'] . "_" . $format_date2);
-                            $c = $cache2->get($key_cache2);
-                            if (is_array($c)) {
-                                if (empty($temp_data)) {
-                                    $temp_data = $c;
-                                } else {
-                                    foreach ($temp_data as $key => $graph) {
-                                        if (is_array($graph) && isset($c[$key]) && is_array($c[$key])) {
-                                            $temp_data[$key] = array_merge($c[$key], $graph);
-                                        }
-                                    }
-                                }
-                            }
-                            if (Utils::calcDiffMinutes($final_date, $start_date) == 0) {
-                                break;
-                            } else {
-                                $start_date->add($format_2);
-                            }
-
-                        }
-                        if (!empty($temp_data)) {
-                            $cache2->set("last_hour_" . $type . "_graph_" . $server['server_id'], $temp_data, 1800);
-                        }
-                        
-                        unset($start_date);
                         unset($cache2);
                         unset($graph);
                     }
@@ -293,10 +260,48 @@ class Servers
             }
         }
 
+        foreach ($for2 as $server) {
+            if ($server['db_type'] == $type || $server['so_type'] == $type) {
+
+                $start_date = clone $final_date;
+
+                $start_date->sub($format_1);
+                $temp_data = array();
+
+                while (Utils::calcDiffMinutes($final_date, $start_date) >= 0) {
+                    $format_date2 = $start_date->format('Y-m-d H:i');
+                    $key_cache2 = sha1($type . "_graph_" . $server['server_id'] . "_" . $format_date2);
+                    $c = $cache->get($key_cache2);
+                    if (is_array($c)) {
+                        if (empty($temp_data)) {
+                            $temp_data = $c;
+                        } else {
+                            foreach ($temp_data as $key => $graph) {
+                                if (is_array($graph) && isset($c[$key]) && is_array($c[$key])) {
+                                    $temp_data[$key] = array_merge($c[$key], $graph);
+                                }
+                            }
+                        }
+                    }
+                    if (Utils::calcDiffMinutes($final_date, $start_date) == 0) {
+                        break;
+                    } else {
+                        $start_date->add($format_2);
+                    }
+
+                }
+                if (!empty($temp_data)) {
+                    $cache->set("last_hour_" . $type . "_graph_" . $server['server_id'], $temp_data, 1800);
+                }
+
+                unset($start_date);
+            }
+
+        }
+
         $end_timer = $this->microtime_float();
 
         echo 'End - ' . $type . ' - ' . ($end_timer - $start_timer) . " seconds" . PHP_EOL;
-    
 
     }
 
