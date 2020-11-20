@@ -6,6 +6,7 @@ use DateInterval;
 use DBSnoop\Annotations\Active;
 use DBSnoop\Annotations\Interval;
 use DBSnoop\Annotations\StartRunning;
+use DBSnoop\Annotations\Cron;
 use DBSnoop\Extension\Server as ExtensionServer;
 use DBSnoop\System\CacheRoutines;
 use DBSnoop\System\Utils;
