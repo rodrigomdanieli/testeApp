@@ -4,9 +4,9 @@ namespace DBRoutines\Bots;
 
 use DateInterval;
 use DBSnoop\Annotations\Active;
+use DBSnoop\Annotations\Cron;
 use DBSnoop\Annotations\Interval;
 use DBSnoop\Annotations\StartRunning;
-use DBSnoop\Annotations\Cron;
 use DBSnoop\Extension\Server as ExtensionServer;
 use DBSnoop\System\CacheRoutines;
 use DBSnoop\System\Utils;
@@ -141,6 +141,7 @@ class Status
 
             $format_1 = new DateInterval('P1D');
             $format_2 = new DateInterval('PT1M');
+            $format_3 = new DateInterval('PT5M');
             $final_date = new \DateTime(date("Y-m-d H:i"));
 
             $format_date = $final_date->format('Y-m-d H:i');
@@ -157,46 +158,70 @@ class Status
                     } elseif ($pid) {
                         $childPids[] = $pid;
                     } else {
+                        function processCache($result)
+                        {
+                            $result_to_cache = array(
+                                "status" => 'G',
+                                "alerts" => array(),
+                            );
+                            foreach ($result as $key => $val) {
+                                if ($val['status'] == 'R') {
+                                    $result_to_cache['status'] = 'R';
+                                } else if ($val['status'] == 'Y' && $result_to_cache['status'] != 'R') {
+                                    $result_to_cache['status'] = 'Y';
+                                } else if ($val['status'] == 'B' && $result_to_cache['status'] != 'R' && $result_to_cache['status'] != 'Y') {
+                                    $result_to_cache['status'] = 'B';
+                                }
+                                if (!empty($val['alerts'])) {
+                                    if (!key_exists($val['service'], $result_to_cache['alerts'])) {
+                                        $result_to_cache['alerts'][$val['service']] = array();
+                                    }
+                                    if (!key_exists($val['type'], $result_to_cache['alerts'][$val['service']])) {
+                                        $result_to_cache['alerts'][$val['service']][$val['type']] = array();
+                                    }
+                                    array_push($result_to_cache['alerts'][$val['service']][$val['type']], array('status' => $val['status'], "alerts" => $val['alerts']));
+                                }
+                            }
+                            return $result_to_cache;
+                        }
+
                         $cache2 = new CacheRoutines;
 
                         $s = new \DBSnoop\Entity\Server($server['server_id']);
                         $ext_server = new \DBSnoop\Extension\Server($s);
 
-                        $key_cache = sha1("status_history_server-" . $server['server_id'] . "-" . $format_date);
+                        $start_date2 = clone $final_date;
 
-                        $result = $ext_server->getHistory($final_date);
+                        $start_date2->sub($format_3);
 
-                        if ($result['status'] == 'ok') {
-                            $result = $result['data'];
+                        while (Utils::calcDiffMinutes($final_date, $start_date2) >= 0) {
+                            $format_date2 = $start_date2->format('Y-m-d H:i');
+                            
+                            //echo "Retroativo - $format_date2" . PHP_EOL;
+                            $key_cache2 = sha1("status_history_server-" . $server['server_id'] . "-" . $format_date2);
+                            if (!$cache2->exists($key_cache2)) {
+                                //echo "Need Retroativo" . PHP_EOL;
+                                $result = $ext_server->getHistory($final_date);
 
-                            if (!empty($result)) {
+                                if ($result['status'] == 'ok') {
+                                    $result = $result['data'];
 
-                                $result_to_cache = array(
-                                    "status" => 'G',
-                                    "alerts" => array(),
-                                );
-                                foreach ($result as $key => $val) {
-                                    if ($val['status'] == 'R') {
-                                        $result_to_cache['status'] = 'R';
-                                    } else if ($val['status'] == 'Y' && $result_to_cache['status'] != 'R') {
-                                        $result_to_cache['status'] = 'Y';
-                                    } else if ($val['status'] == 'B' && $result_to_cache['status'] != 'R' && $result_to_cache['status'] != 'Y') {
-                                        $result_to_cache['status'] = 'B';
-                                    }
-                                    if (!empty($val['alerts'])) {
-                                        if (!key_exists($val['service'], $result_to_cache['alerts'])) {
-                                            $result_to_cache['alerts'][$val['service']] = array();
-                                        }
-                                        if (!key_exists($val['type'], $result_to_cache['alerts'][$val['service']])) {
-                                            $result_to_cache['alerts'][$val['service']][$val['type']] = array();
-                                        }
-                                        array_push($result_to_cache['alerts'][$val['service']][$val['type']], array('status' => $val['status'], "alerts" => $val['alerts']));
+                                    if (!empty($result)) {
+
+                                        $result_to_cache = processCache($result);
+                                        $cache2->set($key_cache2, $result_to_cache, 3 * 24 * 60 * 60);
                                     }
                                 }
-                                $cache2->set($key_cache, $result_to_cache, 3 * 24 * 60 * 60);
-                            }
-                        }
 
+                            }
+                            if (Utils::calcDiffMinutes($final_date, $start_date2) == 0) {
+                                break;
+                            } else {
+                                $start_date2->add($format_2);
+                            }
+
+                        }
+                        
                         $start_date = clone $final_date;
 
                         $start_date->sub($format_1);

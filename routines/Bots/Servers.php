@@ -213,12 +213,10 @@ class Servers
         $cache = new CacheRoutines;
         $format_1 = new \DateInterval('PT1H');
         $format_2 = new \DateInterval('PT1M');
+        $format_3 = new \DateInterval('PT5M');
         $final_date = new \DateTime(date("Y-m-d H:i"));
-        $start_date = clone $final_date;
-        $start = $start_date->sub($format_2)->format("Y-m-d H:i");
-        $end = $final_date->format('Y-m-d H:i');
 
-        echo 'Start - ' . $type . ' - ' . $end . PHP_EOL;
+        echo 'Start - ' . $type . ' - ' . $final_date->format('Y-m-d H:i') . PHP_EOL;
         $for2 = $servers->getAllActiveServers();
         $chunks = array_chunk($for2, 150);
 
@@ -234,15 +232,36 @@ class Servers
                     if ($server['db_type'] == $type || $server['so_type'] == $type) {
 
                         $cache2 = new CacheRoutines;
+                        $end_date = clone $final_date;
+                        $end_date->sub($format_3);
 
-                        $graph = new ExtensionGraphic(new EntityServer($server['server_id']));
-                        $s = $graph->getAllDataGraphicsByType($start, $end, $type);
-                        $hash = sha1($type . "_graph_" . $server['server_id'] . "_" . $end);
+                        $start_date = clone $end_date;
 
-                        $cache2->set($hash, $s, 3 * 24 * 60 * 60);
+                        $start_date->sub($format_2);
 
+                        while (Utils::calcDiffMinutes($final_date, $end_date) >= 0) {
+                            $start = $start_date->format('Y-m-d H:i');
+                            $end = $end_date->format('Y-m-d H:i');
+
+                            $hash = sha1($type . "_graph_" . $server['server_id'] . "_" . $end);
+                            //echo "Check Retroativo - ". $end_date->format('Y-m-d H:i') . PHP_EOL;
+                            if(!$cache2->exists($hash)){
+                                //echo "Is Retroativo" . PHP_EOL;
+                                $graph = new ExtensionGraphic(new EntityServer($server['server_id']));
+                                $s = $graph->getAllDataGraphicsByType($start, $end, $type);
+
+                                $cache2->set($hash, $s, 3 * 24 * 60 * 60);
+                                
+                                unset($graph);
+                            }
+                            if (Utils::calcDiffMinutes($final_date, $end_date) == 0) {
+                                break;
+                            } else {
+                                $start_date->add($format_2);
+                                $end_date->add($format_2);
+                            }
+                        }
                         unset($cache2);
-                        unset($graph);
                     }
                     exit();
                 }
