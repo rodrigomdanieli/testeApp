@@ -210,7 +210,7 @@ class Servers
         $start_timer = $this->microtime_float();
 
         $servers = new ExtensionServer();
-        $cache = new Cache;
+        $cache = new CacheRoutines;
         $format_1 = new \DateInterval('P1D');
         $format_2 = new \DateInterval('PT1M');
         $final_date = new \DateTime(date("Y-m-d H:i"));
