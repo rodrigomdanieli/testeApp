@@ -211,7 +211,7 @@ class Servers
 
         $servers = new ExtensionServer();
         $cache = new CacheRoutines;
-        $format_1 = new \DateInterval('P1D');
+        $format_1 = new \DateInterval('PT1H');
         $format_2 = new \DateInterval('PT1M');
         $final_date = new \DateTime(date("Y-m-d H:i"));
         $start_date = clone $final_date;
