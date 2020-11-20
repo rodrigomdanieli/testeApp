@@ -78,7 +78,7 @@ class Graphics extends ServerRequestControl
 
         if($server->checkAuth()){
             $graphs_data = array(
-                "so" => $cache->get("last_hour_" . $server->getOs_type() . "_graph_" . $server->getId()),
+                "so" => $cache->get("last_hour_" . $server->getSo_type() . "_graph_" . $server->getId()),
                 "db" => $cache->get("last_hour_" . $server->getDb_type() . "_graph_" . $server->getId()),
             );
             return new Response\JSON("ok", $graphs_data);
