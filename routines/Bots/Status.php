@@ -190,7 +190,7 @@ class Status
                                         if (!key_exists($val['type'], $result_to_cache['alerts'][$val['service']])) {
                                             $result_to_cache['alerts'][$val['service']][$val['type']] = array();
                                         }
-                                        array_push($result_to_cache['alerts'][$val['service']][$val['type']], $val['alerts']);
+                                        array_push($result_to_cache['alerts'][$val['service']][$val['type']], array('status' => $val['status'], $val['alerts']));
                                     }
                                 }
                                 $cache2->set($key_cache, $result_to_cache, 3 * 24 * 60 * 60);
