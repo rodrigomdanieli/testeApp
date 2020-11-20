@@ -253,7 +253,8 @@
             "io_wait" : "Wait de E / S",
             "disk_space" : "% Uso",
             "swap" : "Uso del SWAP",
-            "load" : "Cargamento de la CPU"
+            "load" : "Cargamento de la CPU",
+            "slave_lag" : "Retraso del Slave"
         }
     },
     "alert":{
