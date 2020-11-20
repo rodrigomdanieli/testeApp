@@ -132,7 +132,8 @@
             "Script" : "Script",
             "Request" : "Solicitação",
             "Comment": "Comentário",
-            "Incident" : "Incidente"
+            "Incident" : "Incidente",
+            "Monitoring" : "Monitoramento"
         },
         "comments":{
             "Comment": "Comentário",
@@ -179,7 +180,10 @@
         "recurrent": "Recorrente",
         "user": "Usuário",
         "approved": "Aprovado",
-        "remove": "Remover"
+        "remove": "Remover",
+        "schema" : "Esquema",
+        "alert" : "Alerta",
+        "server" :  "Servidor"
     },
     "err":{
         "invalid_username" : "Por favor, digite o nome de usuário correto",
