@@ -15,7 +15,7 @@ class Status
 {
 
     /**
-     *
+     * @Active
      * @Interval(60)
      * @StartRunning
      */
@@ -67,14 +67,14 @@ class Status
                         $start_date->sub($format_1);
                         $temp_data = array();
 
-                        while ($this->calcDiffMinutes($final_date, $start_date) >= 0) {
+                        while (Utils::calcDiffMinutes($final_date, $start_date) >= 0) {
                             $format_date2 = $start_date->format('Y-m-d H:i');
                             $key_cache2 = sha1("status_history_server-" . $server['server_id'] . "-" . $format_date2);
                             $in_cache = $cache2->get($key_cache2);
                             if (!empty($in_cache)) {
                                 $temp_data[$format_date2] = $in_cache;
                             }
-                            if ($this->calcDiffMinutes($final_date, $start_date) == 0) {
+                            if (Utils::calcDiffMinutes($final_date, $start_date) == 0) {
                                 break;
                             } else {
                                 $start_date->add($format_2);
@@ -202,14 +202,14 @@ class Status
                         $start_date->sub($format_1);
                         $temp_data = array();
 
-                        while ($this->calcDiffMinutes($final_date, $start_date) >= 0) {
+                        while (Utils::calcDiffMinutes($final_date, $start_date) >= 0) {
                             $format_date2 = $start_date->format('Y-m-d H:i');
                             $key_cache2 = sha1("status_history_server-" . $server['server_id'] . "-" . $format_date2);
                             $in_cache = $cache2->get($key_cache2);
                             if (!empty($in_cache)) {
                                 $temp_data[$format_date2] = $in_cache;
                             }
-                            if ($this->calcDiffMinutes($final_date, $start_date) == 0) {
+                            if (Utils::calcDiffMinutes($final_date, $start_date) == 0) {
                                 break;
                             } else {
                                 $start_date->add($format_2);
@@ -250,17 +250,5 @@ class Status
             echo $e->getMessage();
         }
     }
-
-    private function calcDiffMinutes(\DateTime $date1, \DateTime $date2)
-    {
-        $diff = $date1->diff($date2);
-        $minutes = $diff->days * 24 * 60;
-        $minutes += $diff->h * 60;
-        $minutes += $diff->i;
-        return $minutes;
-
-    }
-
-
 
 }
