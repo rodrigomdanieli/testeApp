@@ -254,7 +254,8 @@
             "io_wait" : "Wait de I/O",
             "disk_space" : "% Use",
             "swap" : "Use of SWAP",
-            "load" : "Load of CPU"
+            "load" : "Load of CPU",
+            "slave_lag" : "Slave Delay"
         }
     },
     "alert":{
