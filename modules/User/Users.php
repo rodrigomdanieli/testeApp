@@ -222,7 +222,7 @@ class Users extends ServerRequestControl
             return new Response\JSON("error", "EMPTY_VALUE");
         }
 
-        $user_session = new User($this->SESSION['user_id']);
+        $user_session = new User($this->SESSION['user_id'], new User($this->SESSION['user_id']));
         $user = new ExtensionUser($user_session);
 
         $user->setPreference($preference_field, $value_field);
