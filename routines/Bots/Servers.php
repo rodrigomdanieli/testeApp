@@ -92,7 +92,7 @@ class Servers
 
             $format_1 = new \DateInterval('P1D');
             $format_2 = new \DateInterval('PT1M');
-            $final_date = new \DateTime(date('Y-m-21 23:59'));
+            $final_date = new \DateTime(date('Y-m-d 23:59'));
             $final_date->sub($format_1);
             $format_date = $final_date->format('Y-m-d H:i');
             echo 'Start StoreGraph For Day - ' . $format_date . PHP_EOL;
