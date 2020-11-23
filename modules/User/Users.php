@@ -227,9 +227,8 @@ class Users extends ServerRequestControl
 
         $user->setPreference($preference_field, $value_field);
 
-        var_dump($user);
 
-        return new Response\JSON("OK", "OK");
+        return new Response\JSON("ok", "ok");
 
     }
 
@@ -247,7 +246,7 @@ class Users extends ServerRequestControl
         $user = new ExtensionUser($user_session);
 
 
-        return new Response\JSON("OK", var_dump($user->getPreferences()));
+        return new Response\JSON("ok", $user->getPreferences());
 
     }
 
