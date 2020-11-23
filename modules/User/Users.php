@@ -200,7 +200,7 @@ class Users extends ServerRequestControl
     }
 
         /** 
-     * @Route("/user/set_user")
+     * @Route("/user/set_preference")
      * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
@@ -235,7 +235,7 @@ class Users extends ServerRequestControl
 
 
        /** 
-     * @Route("/user/get_user")
+     * @Route("/user/get_preference")
      * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
