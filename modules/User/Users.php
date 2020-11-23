@@ -199,7 +199,7 @@ class Users extends ServerRequestControl
 
     }
 
-        /** 
+    /** 
      * @Route("/user/set_preference")
      * @Auth(true)
      * @Type("JSON")
