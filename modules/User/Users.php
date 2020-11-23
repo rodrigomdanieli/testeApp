@@ -239,7 +239,6 @@ class Users extends ServerRequestControl
      * @Auth(true)
      * @Type("JSON")
      * @Request("POST")
-     * })
      */
     public function get_user(): Response\JSON
     {
