@@ -234,7 +234,7 @@ class Users extends ServerRequestControl
     }
 
 
-       /** 
+    /** 
      * @Route("/user/get_preference")
      * @Auth(true)
      * @Type("JSON")
