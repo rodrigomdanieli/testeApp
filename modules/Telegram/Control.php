@@ -19,7 +19,6 @@ class Control extends ServerRequestControl
      * @Auth(false)
      * @Request("POST")
      * @Needed({
-     *  "update_id",
      *  "message"
      * })
      */
