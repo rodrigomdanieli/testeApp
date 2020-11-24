@@ -17,7 +17,7 @@ class Control extends ServerRequestControl
     /**
      * @Route("/telegram/hook")
      * @Auth(false)
-     * @Request("GET")
+     * @Request("POST")
      * @Needed({
      *  "update_id",
      *  "message"
