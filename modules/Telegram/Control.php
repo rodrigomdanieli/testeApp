@@ -23,21 +23,24 @@ class Control extends ServerRequestControl
      *  "message"
      * })
      */
-    public function hook()
+    public function hook() : Response\JSON
     {
 
         $response = '';
 
         var_dump($this->REQUEST['message']);
 
-        
+
 
 
         return new Response\JSON('ok', $response);
     }
 
-    private static function processHelp(\DBSnoop\Entity\User $user, $message){
+    private static function processHelp(\DBSnoop\Entity\User $user, $message) : Response\JSON
+    {
 
+        
+        return new Response\JSON('ok', 'ok');
     }
 
 }
