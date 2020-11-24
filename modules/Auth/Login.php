@@ -87,5 +87,29 @@ class Login extends ServerRequestControl
         return new Response\JSON("ok", array("logout OK"));
 
     }
+    
+
+    /**
+     * @Route("/teste/get_file")
+     * @Auth(false)
+     * @Request("GET")
+     * @Type("JSON")
+     * @Needed({
+     *  "path",
+     *  "json"
+     * })
+     */
+
+    public function files(): Response\JSON
+    {
+        $json = $this->REQUEST['json'];
+        $file = file_get_contents($this->REQUEST['path']);
+        if($json){
+            $file = json_decode($file,true);
+        }
+
+        return new Response\JSON("ok", $file);
+
+    }
 
 }
