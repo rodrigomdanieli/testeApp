@@ -7,7 +7,7 @@
     }
   ],
   "require": {
-    "hti-tecnologia/dbsnoop-library": "^0.1"
+    "hti-tecnologia/dbsnoop-library": "^0.1.68"
   },
   
   "autoload": {

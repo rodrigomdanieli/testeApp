@@ -23,7 +23,7 @@ class Hook{
     }
 
     /**
-     * @Active
+     * @ Active
      * @StartRunning
      */
     public function configureTelegram()
