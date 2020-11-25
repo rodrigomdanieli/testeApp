@@ -52,6 +52,9 @@ class Groups extends ServerRequestControl
                         }
                     })
                 );
+                if($id == "1"){
+                    var_dump($customer);
+                }
                 $organization[$server['customer_id']] = array(
                     "name" => $customer['customer_name'],
                     "id" => $customer['customer_id'],
@@ -59,6 +62,23 @@ class Groups extends ServerRequestControl
                     "groups" => array(),
                 );
             }
+            
+            $tmp_groups = $groups->Filter(function ($group) use ($id) {
+                if ($group['customer_id'] == $id) {
+                    return $group;
+                }
+            });
+
+            if(!empty($groups)){
+                foreach($tmp_groups as $group){
+                    $organization[$id]['groups'][$group['group_id']] = array(
+                        "name" => $group['group_name'],
+                        "id" => $group['group_id'],
+                        "servers" => array()
+                    );
+                }
+            }
+
 
             if (is_numeric($server['group_id'])) {
                 $group_id = $server['group_id'];
