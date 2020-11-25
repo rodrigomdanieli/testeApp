@@ -69,7 +69,7 @@ class Groups extends ServerRequestControl
                 }
             });
 
-            if(!empty($groups)){
+            if(!empty($tmp_groups)){
                 foreach($tmp_groups as $group){
                     $organization[$id]['groups'][$group['group_id']] = array(
                         "name" => $group['group_name'],
