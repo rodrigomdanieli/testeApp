@@ -61,7 +61,7 @@ class Hook{
     }
 
     /**
-     * @Active
+     * @ Active
      * @Interval(1)
      */
     public function hook()
