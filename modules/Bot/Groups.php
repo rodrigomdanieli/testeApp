@@ -68,18 +68,18 @@ class Groups extends ServerRequestControl
                 }
             });
             
-            if($id == '1')
-                var_dump($tmp_groups);
+            // if($id == '1')
+            //     var_dump($tmp_groups);
 
-            if(!empty($tmp_groups)){
-                foreach($tmp_groups as $group){
-                    $organization[$id]['groups'][$group['group_id']] = array(
-                        "name" => $group['group_name'],
-                        "id" => $group['group_id'],
-                        "servers" => array()
-                    );
-                }
-            }
+            // if(!empty($tmp_groups)){
+            //     foreach($tmp_groups as $group){
+            //         $organization[$id]['groups'][$group['group_id']] = array(
+            //             "name" => $group['group_name'],
+            //             "id" => $group['group_id'],
+            //             "servers" => array()
+            //         );
+            //     }
+            // }
 
 
             if (is_numeric($server['group_id'])) {
