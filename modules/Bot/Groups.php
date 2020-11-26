@@ -52,9 +52,6 @@ class Groups extends ServerRequestControl
                         }
                     })
                 );
-                if($id == "1"){
-                    var_dump($customer);
-                }
                 $organization[$server['customer_id']] = array(
                     "name" => $customer['customer_name'],
                     "id" => $customer['customer_id'],
@@ -63,11 +60,16 @@ class Groups extends ServerRequestControl
                 );
             }
             
+
+
             $tmp_groups = $groups->Filter(function ($group) use ($id) {
-                if ($group['customer_id'] == $id) {
+                if ($group['customer_id'] == $id && !is_null($group['group_id'])) {
                     return $group;
                 }
             });
+            
+            if($id == '1')
+                var_dump($tmp_groups);
 
             if(!empty($tmp_groups)){
                 foreach($tmp_groups as $group){
