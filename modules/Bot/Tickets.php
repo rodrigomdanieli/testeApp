@@ -48,7 +48,7 @@ class Tickets extends ServerRequestControl
     {
         $filter = array(
             'status' => 'All Closed',
-            'start' => date('Y-m-d', strtotime('-'.$this->SESSION['data_retention'].' days')),
+            'start' => date('Y-m-d', strtotime('-10 days')),
             'user' => $this->SESSION['user_id']
         );
 
