@@ -37,27 +37,40 @@ class Login extends ServerRequestControl
             "data" => array(),
         );
 
-        $verified = $login->Login($user, $pass);
-        var_dump($verified);
-        if ($verified['status'] == "ok") {
-            if (empty($verified['data'])) {
-                $response["status"] = "error";
-                $response["data"] = "INVALID_LOGIN";
-                
-            }else if(isset($verified['data'][0]) && isset($verified['data'][0]['EMPTY_PLAN'])){
-                $response["status"] = "error";
-                $response["data"] = "EMPTY_PLAN";
-            } else {
-                $auth = new Authentication();
-                $token = $auth->createNewAuthentication($verified['data'][0]);
-                $response["data"] = array('token' => $token);
-            }
-
-        }
+        $response = $login->Login($user, $pass);
+        
 
         return new Response\JSON($response["status"], $response["data"]);
 
     }
+    /**
+     * @Route("/auth/force_login")
+     * @Auth(false)
+     * @Request("POST")
+     * @Needed({
+     *      "username",
+     *      "password"
+     * })
+     * @Type("JSON")
+     */
+    public function force_login(): Response\JSON
+    {
+        $user = $this->REQUEST['username'];
+        $pass = $this->REQUEST['password'];
+        $login = new DBAuth();
+
+        $response = array(
+            "status" => "ok",
+            "data" => array(),
+        );
+
+        $response = $login->forceLogin($user, $pass);
+        
+
+        return new Response\JSON($response["status"], $response["data"]);
+
+    }
+    
 
     /**
      * @Route("/auth/check")

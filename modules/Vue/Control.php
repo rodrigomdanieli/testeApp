@@ -167,7 +167,7 @@ class Control extends ServerRequestControl
      *  "lang"
      * })
      */
-    public function lang(): Response\JSON
+    public function get_lang(): Response\JSON
     {
         $langs = json_decode(file_get_contents(root_dir . "langs/" . $this->REQUEST['lang'] . ".json"), true);
 
@@ -200,4 +200,18 @@ class Control extends ServerRequestControl
 
     }
 
+    
+    /**
+     * 
+     * @Route("/control/get_control_config")
+     * @Auth(true)
+     * @Request("POST")
+     * @Needed({
+     *  "config_name"
+     * })
+     */
+    public function configs(): Response\JSON
+    {
+        return new Response\JSON('ok', $this->SESSION[$this->REQUEST['config_name']]);
+    }
 }
