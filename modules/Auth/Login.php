@@ -43,6 +43,34 @@ class Login extends ServerRequestControl
         return new Response\JSON($response["status"], $response["data"]);
 
     }
+    /**
+     * @Route("/auth/force_login")
+     * @Auth(false)
+     * @Request("POST")
+     * @Needed({
+     *      "username",
+     *      "password"
+     * })
+     * @Type("JSON")
+     */
+    public function force_login(): Response\JSON
+    {
+        $user = $this->REQUEST['username'];
+        $pass = $this->REQUEST['password'];
+        $login = new DBAuth();
+
+        $response = array(
+            "status" => "ok",
+            "data" => array(),
+        );
+
+        $response = $login->forceLogin($user, $pass);
+        
+
+        return new Response\JSON($response["status"], $response["data"]);
+
+    }
+    
 
     /**
      * @Route("/auth/check")
