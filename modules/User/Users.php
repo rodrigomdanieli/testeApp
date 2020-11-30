@@ -190,7 +190,7 @@ class Users extends ServerRequestControl
             return new Response\JSON("error", "EMPTY_VALUE");
         }
 
-        $user = new User($this->SESSION['user_id'],$value_id);
+        $user = new User(new User($this->SESSION['user_id']),$value_id);
         $user->{$value_field} = $value;
 
         var_dump($user->save());
