@@ -10,6 +10,7 @@ use DBSnoop\Annotations\Type;
 use DBSnoop\Entity\Customer;
 use DBSnoop\Entity\User;
 use DBSnoop\Extension\User as ExtensionUser;
+use DBSnoop\Lists\User as ListsUser;
 use DBSnoop\System\Response;
 use DBSnoop\System\ServerRequestControl;
 
@@ -247,6 +248,25 @@ class Users extends ServerRequestControl
 
 
         return new Response\JSON("ok", $user->getPreferences());
+
+    }
+
+    /** 
+     * @Route("/user/list")
+     * @Auth(true)
+     * @Type("JSON")
+     * @Request("POST")
+     */
+    public function list_users(): Response\JSON
+    {
+
+        $filter = array(
+            "user" => $this->SESSION['user_id']
+        );
+        $user = new ListsUser($filter);
+        $return = $user->toArray();
+        
+        return new Response\JSON("ok", $return);
 
     }
 
