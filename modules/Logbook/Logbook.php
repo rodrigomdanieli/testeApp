@@ -201,4 +201,31 @@ class Logbook extends ServerRequestControl
         return new Response\JSON("OK", "OK");
         
     }
+
+    
+
+    /**
+     *
+     * @Route("/logbook/list")
+     * @Auth(true)
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     * "customer"
+     * })
+     */
+    public function list_logbook(): Response\JSON
+    {
+        $filter = array(
+            "customer" => $this->REQUEST['customer'],
+            "user"  => $this->SESSION['user_id']
+        );
+
+        $log = new ListLogBook($filter);
+
+        return new Response\JSON("OK", $log->toArray());
+        
+    }
+
+    
 }
