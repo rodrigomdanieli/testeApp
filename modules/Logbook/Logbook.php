@@ -227,5 +227,24 @@ class Logbook extends ServerRequestControl
         
     }
 
+    /**
+     *
+     * @Route("/logbook/get")
+     * @Auth(true)
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     * "customer"
+     * })
+     */
+    public function get_logbook(): Response\JSON
+    {
+
+        $log = new LogBooks(new User($this->SESSION['user_id'], $this->REQUEST['customer']));
+        
+        return new Response\JSON("OK", $log->toArray());
+        
+    }
+
     
 }
