@@ -231,13 +231,13 @@
             "db2" : "DB2"
         },
         "alert":{
-            "alert.threads" : "Threads",
-            "alert.db_status" : "Status DB",
-            "alert.replication" : "Replication",
-            "alert.availability" : "Availability",
-            "alert.disk" : "Disk",
-            "alert.cpu" : "CPU",
-            "alert.memory" : "Memory"
+            "threads" : "Threads",
+            "db_status" : "Status DB",
+            "replication" : "Replication",
+            "availability" : "Availability",
+            "disk" : "Disk",
+            "cpu" : "CPU",
+            "memory" : "Memory"
         },
         "disabled" : "Disabled",
         "filter" : "Filter",
