@@ -171,10 +171,9 @@ class Logbook extends ServerRequestControl
         $user = new User($this->SESSION['user_id']);
         $logBook = new LogBooks($this->REQUEST['id'],$user);
         $logBookList = new ExtensionLogBook($logBook);
-        $logBookList->getTicketList();
+        $list = $logBookList->getTicketList();
 
-        var_dump($logBookList);
-        return new Response\JSON("ok", "OK");
+        return new Response\JSON("ok", $list);
         
     }
 
