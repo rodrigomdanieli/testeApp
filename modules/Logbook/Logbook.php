@@ -64,7 +64,7 @@ class Logbook extends ServerRequestControl
             return new Response\JSON("error", "INVALID_CUSTOMER");
         }
         
-        if(!is_numeric($unavailability_time)){
+        if(!empty($unavailability_time) && !is_numeric($unavailability_time)){
             return new Response\JSON("error", "INVALID_UNAVAILABILITY_TIME");
         }
 
@@ -82,9 +82,9 @@ class Logbook extends ServerRequestControl
         $logBook->title = $this->REQUEST['title'];
         $logBook->description = $this->REQUEST['description'];
 
-        var_dump($logBook->save());
+        $save = $logBook->save();
         
-        return new Response\JSON("ok", "OK");        
+        return new Response\JSON("ok", $save['data']);        
     }
 
     /**
@@ -171,10 +171,9 @@ class Logbook extends ServerRequestControl
         $user = new User($this->SESSION['user_id']);
         $logBook = new LogBooks($this->REQUEST['id'],$user);
         $logBookList = new ExtensionLogBook($logBook);
-        $logBookList->getTicketList();
+        $list = $logBookList->getTicketList();
 
-        var_dump($logBookList);
-        return new Response\JSON("ok", "OK");
+        return new Response\JSON("ok", $list['data']);
         
     }
 
@@ -260,7 +259,7 @@ class Logbook extends ServerRequestControl
     {
 
         $log = new LogBooks(new User($this->SESSION['user_id']), $this->REQUEST['id']);
-        $log->timestamp_close = date('Y-m-d h:i:sa');
+        $log->timestamp_close = date('Y-m-d H:i:s');
         $log->save();
 
         
