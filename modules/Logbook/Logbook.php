@@ -82,9 +82,9 @@ class Logbook extends ServerRequestControl
         $logBook->title = $this->REQUEST['title'];
         $logBook->description = $this->REQUEST['description'];
 
-        var_dump($logBook->save());
+        $save = $logBook->save();
         
-        return new Response\JSON("ok", "OK");        
+        return new Response\JSON("ok", $save['data']);        
     }
 
     /**
