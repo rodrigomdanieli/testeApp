@@ -17,6 +17,11 @@
         }
     },
     "lbl" : {
+        "low" : "Baixo",
+        "medium" : "Médio",
+        "high" : "Alto",
+        "yes" : "Sim",
+        "no" : "Não",
         "total_servers" : "Total Servidor",
         "total_alerts" : "Total Alerta",
         "total_criticals" : "Total de Críticos",

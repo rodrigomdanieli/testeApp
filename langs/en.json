@@ -17,6 +17,11 @@
         }
     },
     "lbl": {
+        "low" : "Low",
+        "medium" : "Medium",
+        "high" : "High",
+        "yes" : "Yes",
+        "no" : "No",
         "total_servers" : "Total Server",
         "total_alerts" : "Total Alert",
         "total_criticals" : "Total Critics",
