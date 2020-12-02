@@ -240,7 +240,7 @@ class Logbook extends ServerRequestControl
     public function get_logbook(): Response\JSON
     {
 
-        $log = new LogBooks(new User($this->SESSION['user_id'], $this->REQUEST['id']));
+        $log = new LogBooks(new User($this->SESSION['user_id']), $this->REQUEST['id']);
         
         return new Response\JSON("OK", $log->toArray());
         
