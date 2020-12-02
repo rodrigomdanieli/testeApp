@@ -246,5 +246,25 @@ class Logbook extends ServerRequestControl
         
     }
 
-    
+    /**
+     *
+     * @Route("/logbook/closed")
+     * @Auth(true)
+     * @Type("JSON")
+     * @Request("POST")
+     * @Needed({
+     * "id"
+     * })
+     */
+    public function closed_logbook(): Response\JSON
+    {
+
+        $log = new LogBooks(new User($this->SESSION['user_id']), $this->REQUEST['id']);
+        $log->timestamp_close = date('Y-m-d h:i:sa');
+        $log->save();
+
+        
+        return new Response\JSON("ok", "OK");
+        
+    }
 }
