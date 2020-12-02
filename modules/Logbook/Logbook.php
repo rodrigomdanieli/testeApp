@@ -259,7 +259,7 @@ class Logbook extends ServerRequestControl
     {
 
         $log = new LogBooks(new User($this->SESSION['user_id']), $this->REQUEST['id']);
-        $log->timestamp_close = date('Y-m-d h:i:sa');
+        $log->timestamp_close = date('Y-m-d H:i:s');
         $log->save();
 
         
