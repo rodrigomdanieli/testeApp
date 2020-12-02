@@ -173,7 +173,7 @@ class Logbook extends ServerRequestControl
         $logBookList = new ExtensionLogBook($logBook);
         $list = $logBookList->getTicketList();
 
-        return new Response\JSON("ok", $list);
+        return new Response\JSON("ok", $list['data']);
         
     }
 
