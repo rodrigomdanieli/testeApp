@@ -84,7 +84,7 @@ class Logbook extends ServerRequestControl
 
         var_dump($logBook->save());
         
-        return new Response\JSON("OK", "OK");        
+        return new Response\JSON("ok", "OK");        
     }
 
     /**
@@ -118,7 +118,7 @@ class Logbook extends ServerRequestControl
         $logBook->save();
 
         
-        return new Response\JSON("OK", "OK");
+        return new Response\JSON("ok", "OK");
         
     }
 
@@ -150,7 +150,7 @@ class Logbook extends ServerRequestControl
         $logBook_Entry->save();
 
 
-        return new Response\JSON("OK", "OK");
+        return new Response\JSON("ok", "OK");
         
     }
 
@@ -174,7 +174,7 @@ class Logbook extends ServerRequestControl
         $logBookList->getTicketList();
 
         var_dump($logBookList);
-        return new Response\JSON("OK", "OK");
+        return new Response\JSON("ok", "OK");
         
     }
 
@@ -198,7 +198,7 @@ class Logbook extends ServerRequestControl
         $logBookList = new ExtensionLogBook($logBook);
         $logBookList->addTicket(new Ticket($this->REQUEST['ticket_id']));
 
-        return new Response\JSON("OK", "OK");
+        return new Response\JSON("ok", "OK");
         
     }
 
@@ -223,7 +223,7 @@ class Logbook extends ServerRequestControl
 
         $log = new ListLogBook($filter);
 
-        return new Response\JSON("OK", $log->toArray());
+        return new Response\JSON("ok", $log->toArray());
         
     }
 
@@ -242,7 +242,7 @@ class Logbook extends ServerRequestControl
 
         $log = new LogBooks(new User($this->SESSION['user_id']), $this->REQUEST['id']);
         
-        return new Response\JSON("OK", $log->toArray());
+        return new Response\JSON("ok", $log->toArray());
         
     }
 
