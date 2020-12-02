@@ -234,13 +234,13 @@ class Logbook extends ServerRequestControl
      * @Type("JSON")
      * @Request("POST")
      * @Needed({
-     * "customer"
+     * "id"
      * })
      */
     public function get_logbook(): Response\JSON
     {
 
-        $log = new LogBooks(new User($this->SESSION['user_id'], $this->REQUEST['customer']));
+        $log = new LogBooks(new User($this->SESSION['user_id'], $this->REQUEST['id']));
         
         return new Response\JSON("OK", $log->toArray());
         
