@@ -64,7 +64,7 @@ class Logbook extends ServerRequestControl
             return new Response\JSON("error", "INVALID_CUSTOMER");
         }
         
-        if(!is_numeric($unavailability_time)){
+        if(!empty($unavailability_time) && !is_numeric($unavailability_time)){
             return new Response\JSON("error", "INVALID_UNAVAILABILITY_TIME");
         }
 
