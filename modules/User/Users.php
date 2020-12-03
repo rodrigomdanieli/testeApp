@@ -151,7 +151,7 @@ class Users extends ServerRequestControl
 
         var_dump($obj_user->save());
         
-        return new Response\JSON("OK", "OK");
+        return new Response\JSON("ok", "ok");
 
     }
 
@@ -196,7 +196,7 @@ class Users extends ServerRequestControl
 
         var_dump($user->save());
 
-        return new Response\JSON("OK", "OK");
+        return new Response\JSON("ok", "ok");
 
     }
 

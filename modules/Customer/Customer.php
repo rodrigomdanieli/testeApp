@@ -45,7 +45,7 @@ class Customer extends ServerRequestControl
         // }else{
         //     return new Response\JSON("OK", "OK");
         // }
-        return new Response\JSON("OK", "OK");
+        return new Response\JSON("ok", "OK");
         
     }
 }
